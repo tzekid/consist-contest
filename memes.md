@@ -18,7 +18,7 @@ After you've successfully installed it, open your browser and enter  `http://loc
 
 There you can enter your Splunk login credentials (username | password). Once logged in click on the "Search & Reporting" app on the bar on the left.
 
- ((( Image with Splunk Search App ))) You should get something like this.
+ ((( Image with Splunk Home -> highlight Search App ))) You should get something like this.
 
 ## Importing sample data
 
@@ -32,15 +32,65 @@ Once there, you can upload [this dataset](#). Splunk can handle a buttload of di
 
 ## The Search interface
 
+( TODO: always click on `all time` )
 
+( TODO: pivot from status to action )
 
-### Labels
+((( Image with Search App interface: highlighted searchbar, fields and events)))
+
+This is where you will be spending most of your time in Splunk. The interface can be broadly broken down in three areas: Events, Fields-bar and Searchbar.
+
+### Searchbar
+
+((( TODO ? or skip entirely )))
+
+### Events
+
+((( Image with expanded event )))
+
+In the middle of the screen you see a table with three columns: **i**, **Time** and **Event**. The **Event**s might look scary mess at first, but don't worry. Look at the first event and click on the right arrow on the left, in the **i** column. The big, scary string is now broken down and categorized into a bunch of smaller fields. If you're somewhat familiar with websites, then this data be familiar to you.
+
+Once you input something in Splunk, it looks for patterns and tries to make something out of the data you give it. In the worst case scenario, it will at least try to categorize the data by some kind of time-stamp.
+
+### Fields-bar
+
+Now, if you shrink the event (by clicking on the down-arrow) you can have a look on the left side at the Fields-bar. There you see many, if not all, of the fields that you saw in the event. The number next to the field shows how many different kind of values a field can have.
+
+Let's say you want to see if the shop works correctly. When you browse the web and go on a page, the server that send you the page also gives you a status response. This status can be **200**: success, **404**: not found or **503**: server error.
+
+((( Image with expanded status )))
+
+If you click on the **status** field on the Field-bar you will see which status has been sent how many times and it's percentage compared to the whole. This is already very powerful information, because we can see at a glance how well our site performs.
+
+Above the table there are some 'Reports' ready for us. These are quick, general searches which are generally useful. By clicking on **Top values by time** you will be taken to a visualization of the statuses over time.
+
+((( Image with Top values by time ))) 
+
+If you look at the search bar you will see a pre-built search which will look something like:
+
+((( Image breaking down the syntax like 97 in dingding )))
+
+Which more or less means: ((( paraphrase the explanation in one sentence. )))
 
 ## The Splunk Processing Language (SPL)
+
+((( * -> status=503 )))
+
+- searching for stuff
+  - simple searching
+    - wildcards
+    - operators (and, or, not)
+  - searching fields
+- pipe(s)
+- stats and timechart
+  - nice stuff you can do with it
+- 
 
 ### How to search for stuff
 
 ### Filtering your results
+
+
 
 ### Tables and Visualizations
 
