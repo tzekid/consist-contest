@@ -3,263 +3,386 @@
     - [ ] images & text for 'prices'
     - [ ] mobile (& fix search|dashboards|BD containers)
     - [ ] burger menu for mobile
-    - [ ] custom maps and make it bigger (full-width ?) 
+    - [ ] custom maps ?
+    - [ ] articles
+        - [ ] getting started
+        - [ ] big data
+        - [ ] search
+        - [ ] dashboards
  -->
 
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Consist Contest</title>
 
     <!-- <link rel="stylesheet" href="bulma.css"> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.9.0/js/all.js"></script>
 
     <style>
+        /* font-family: 'Comfortaa', cursive; */
+        * {
+            font-family: 'Comfortaa', cursive;
+        }
+
         .night {
             background: url(wallpaper.jpg) no-repeat center center;
         }
+
+        @media (max-width: 480px) {
+            button.button {
+                /* display: flex; */
+                width: 100%;
+            }
+        }
     </style>
 </head>
+
 <body>
     <section class="hero is-fullheight is-bold night" id="home">
-            <div class="hero-body">
-                <div class="container">
-                    <div class="column is-two-thirds is-offset-2 box has-text-centered">
-                        <br/>
-                        <h1 class="title has-text-black-bis is-size-1"><span class="has-text-success">Splunk</span> BIG DATA Hackathon</h1>
-                        <h2 class="subtitle has-text-black-bis is-size-4">Powered by <span class="has-text-link">CONSIST</span> Software</h2>
-                        <br/>
-                    </div>
+        <div class="hero-body">
+            <div class="container">
+                <div class="column is-two-thirds is-offset-2 box has-text-centered">
+                    <br />
+                    <h1 class="title has-text-black-bis is-size-1">
+                        <span class="has-text-success">Splunk</span> BIG DATA Hackathon
+                    </h1>
+                    <h2 class="subtitle has-text-black-bis is-size-4">
+                        Powered by <span class="has-text-link">CONSIST</span> Software
+                    </h2>
+                    <br />
+                </div>
 
-                    <br/>
-                    <!-- <br/> -->
+                <br />
+                <!-- <br/> -->
 
-                    <div class="column has-text-black-bis is-half is-offset-one-quarter box has-text-centered">
-                        <h1 class="is-size-1">Frankfurt</h1>
-                        <h3 class="is-size-3"><span class="has-text-link">12 Juli</span></h3>
-                        <br/>
-                        <h5 class="is-size-6">Startet in ...</h5>
-                        <br/>
-                        <!-- TODO: Countdown -->
-                    </div>
+                <div class="column has-text-black-bis is-half is-offset-one-quarter box has-text-centered">
+                    <h1 class="is-size-1">Frankfurt</h1>
+                    <h3 class="is-size-3">
+                        <span class="has-text-link">12 Juli</span>
+                    </h3>
+                    <br />
+                    <h5 class="is-size-6">Startet in ...</h5>
+                    <br />
+                    <!-- TODO: Countdown -->
+                </div>
 
-                    <br/>
-                    <!-- <br/> -->
+                <br />
+                <!-- <br/> -->
 
-                    <a href="#" class="column is-one-third is-offset-4 box has-text-black-bis has-text-centered is-size-1">Anmelden</a>
-                    
-                    <br/>
-                    <!-- <br/> -->
+                <a href="#anmelden"
+                    class="column is-one-third is-offset-4 box has-text-black-bis has-text-centered is-size-1">Anmelden</a>
 
-                    <div class="column has-text-centered">
-                        <a href="#hackathon"><i class="has-text-light fas fa-chevron-down fa-4x"></i></a>
-                    </div>
+                <br />
+                <!-- <br/> -->
+
+                <div class="column has-text-centered">
+                    <a href="#hackathon"><i class="has-text-light fas fa-chevron-down fa-4x"></i></a>
                 </div>
             </div>
+        </div>
     </section>
 
-    <section class="hero is-fullheight is-bold" id="hackathon">
-            <div class="hero-body">
-                <div class="container">
-                    <div class="column is-half-desktop is-offset-3-desktop has-text-centered">
-                        <h1 class="title has-text-black-bis is-size-1">Was ist ein Hackathon und wer kann hacken:</h1>
-                        <br/><br/>
-                    </div>
-
-                    <div class="column has-text-centered has-text-grey-darker">
-                        <p class="is-size-3"> Hackathons sind auf Rapid Prototyping und Innovation ausgelegt.
-                        <br/>Es gibt keine Grenzen für das, was wir schaffen können.Und was noch wichtiger ist: Hackathons sind nicht nur für IT-ler oder Entwickler. Sie sind auch für Designer, Marketer und Geschäftsleute. Alle Altersgruppen, Geschlechter und Fertigkeitsstufen sind zur Teilnahme herzlich willkommen.</p>
-                        <br/><br/>
-                        <p class="is-size-3">Sie müssen nicht teil eines Teams sein, Teams können vor Ort gebildet werden.</p>
-                        <br/><br/>
-                    </div>
-
-                    <a href="#" class="column is-one-third is-offset-4 box has-text-black-bis has-text-centered is-size-1">Anmelden</a>
-                    
-                </div>
-            </div>
-    </section>
-
-    <section class="hero is-black is-fullheight is-bold" id="preise">
-            <div class="hero-body">
-                <div class="container">
-                    <div class="column">
-                            <h1 class="title has-text-white-bis is-size-1">Es gibt tolle Preise!</h1>
-                            <h3 class="subtitle has-text-white-bis is-size-5">und gratis Essen und Getränke...</h3>
-                            <br/>
-                        </div>
-                        <div class="column">
-                            <p class="is-size-3"><span class="is-size-1">• </span> ein Raspberry Pi 3b+ für die beste Team</p>
-                            <p class="is-size-3"><span class="is-size-1">• </span> USB Sticks für die zweit-besten</p>
-                            <p class="is-size-3"><span class="is-size-1">• </span> Dingdings für den Rest</p>
-                            <p class="is-size-3"><span class="is-size-1">• </span> und mehr !</p>
-                        </div>
-                </div>
-            </div>
-    </section>
-
-    <section class="hero is-fullheight is-bold" id="kenntnisse">
-            <div class="hero-body">
-                <div class="container">
-                    <div class="column is-half is-offset-3 has-text-centered">
-                        <h1 class="title has-text-black-bis is-size-1">Was muss man da alles machen?</h1>
-                        <br/>
-                    </div>
-
-
-                    <div class="column is-half-desktop is-offset-3-desktop box has-text-centered ">
-                        <br/>
-                        <h1 class="title has-text-black-bis is-size-1"><span class="has-text-success">Splunk</span></h1>
-                        <h2 class="subtitle has-text-black-bis is-size-3">Lerne mit dem Splunk<br/>Umgebung umzugehen ...</h2>
-                        <br/>
-                    </div>
-
-                    <br/>
-                    <br/>
-
-                    <div class="column is-full">
-                            <div class="columns is-desktop">
-                                    <!-- The gap is set by hand, because I couldn't do it w/ the -->
-                                    <div class="column box has-text-centered" style="margin-right: 2em;">
-                                        <br/>
-                                        <h1 class="title has-text-black-bis is-size-1">Suche</h1>
-                                        <br/>
-                                        <h3 class="subtitle has-text-black-bis is-size-3">Blah blah blah blah</h3>
-                                        <img src="wallpaper.jpg" alt="dickbutt">
-                                        <br/>
-                                        <br/>
-                                        <a class="is-size-3 has-text-success" href="#">mehr dazu ...</a>
-                                        <br/>
-                                        <br/>
-                                    </div>
-
-                                    <div class="column box has-text-centered">
-                                        <br/>
-                                        <h1 class="title has-text-black-bis is-size-1">Dashboards</h1>
-                                        <br/>
-                                        <h3 class="subtitle has-text-black-bis is-size-3">Blah blah blah blah</h3>
-                                        <img src="wallpaper.jpg" alt="dickbutt">
-                                        <br/>
-                                        <br/>
-                                        <a class="is-size-3 has-text-success" href="#">mehr dazu ...</a>
-                                        <br/>
-                                        <br/>
-                                    </div>
-                                    
-                                    <!-- Had a bug where the last box was too long -->
-                                    <div class="column box has-text-centered" style="margin-left: 2em; margin-bottom: 1.5em;">
-                                        <br/>
-                                        <h1 class="title has-text-black-bis is-size-1">BIG DATA</h1>
-                                        <br/>
-                                        <h3 class="subtitle has-text-black-bis is-size-3">Blah blah blah blah</h3>
-                                        <img src="wallpaper.jpg" alt="dickbutt">
-                                        <br/>
-                                        <br/>
-                                        <a class="is-size-3 has-text-success" href="#">mehr dazu ...</a>
-                                    </div>
-                            </div>
-                    </div>
-
-                    <br/>
-                    <br/>
-
-                    <a href="#" class="column is-half is-offset-3 box has-text-black-bis has-text-centered is-size-1">Anmelden</a>
-                    
-                </div>
-            </div>
-    </section>
-
-    <section class="hero is-black is-fullheight is-bold">
+    <section class="hero is-fullheight is-bold is-black" id="hackathon">
         <div class="hero-body">
             <div class="container">
                 <div class="column is-half-desktop is-offset-3-desktop has-text-centered">
-                    <h1 class="title has-text-white-bis is-size-1">Location und Zeit</h1>
-                    <h1 class="title has-text-success is-size-1 has-text-success">Hanauer Str. 15</h1>
-                    <h1 class="title has-text-link is-size-1 has-text-link">12. Juli - 13:37 Uhr</h1>
+                    <h1 class="title has-text-white-bis is-size-1">
+                        Was ist ein Hackathon und wer kann hacken:
+                    </h1>
+                    <br /><br />
                 </div>
 
-                <br/>
-                <br/>
-                <br/>
+                <div class="column has-text-centered has-text-white-darker">
+                    <p class="is-size-3">
+                        Hackathons sind auf Rapid Prototyping und Innovation ausgelegt.
+                        <br />Es gibt keine Grenzen für das, was wir schaffen können. Und
+                        was noch wichtiger ist: Hackathons sind nicht nur für IT-ler oder
+                        Entwickler.<b> Sie sind auch für Designer, Marketer und
+                            Geschäftsleute. Alle Altersgruppen, Geschlechter und
+                            Fertigkeitsstufen sind zur Teilnahme herzlich willkommen. </b>
+                    </p>
+                    <br /><br />
+                    <p class="is-size-3">
+                        Sie müssen nicht teil eines Teams sein, Teams können vor Ort
+                        gebildet werden.
+                    </p>
+                    <br /><br />
+                </div>
 
-                <br/>
-                <br/>
-                <br/>
-
-                <iframe class="column is-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1669.9007273452223!2d8.758345029113277!3d50.333983039319214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bd0213f2cac873%3A0x6e0b7dce8568e068!2sChin+Thai!5e0!3m2!1sen!2suk!4v1555534445053!5m2!1sen!2suk" width="600" height="450" frameborder="0" style="border: 0; height: 21em;" allowfullscreen></iframe>
+                <a href="#anmelden"
+                    class="column is-one-third is-offset-4 box has-text-black-bis has-text-centered is-size-1">Anmelden</a>
             </div>
-        </div>
-    
-        <!-- nav at the bottom -->
-        <div class="hero-foot">
-                <nav class="navbar" role="navigation" aria-label="main navigation">
-                    <div class="navbar-brand" style="margin-left:5em;">
-                        <a class="navbar-item is-size-3 has-text-link" href="#">
-                            CONSIST
-                        </a>
-
-                        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" style="margin-right:5em;">
-                            <span aria-hidden="true"></span>
-                            <span aria-hidden="true"></span>
-                            <span aria-hidden="true"></span>
-                        </a>
-                    </div>
-                
-                    <div class="navbar-menu" id="navMenu">
-                        <div class="navbar-end" style="margin-right:5em;">
-                            <a href="#home" class="navbar-item">
-                            Home
-                            </a>
-                    
-                            <a href="#hackathon" class="navbar-item">
-                            Hackathon
-                            </a>
-                    
-                            <a href="#preise" class="navbar-item">
-                            Preise
-                            </a>
-                    
-                            <a href="#kenntnisse" class="navbar-item">
-                            Kenntnisse
-                            </a>
-                        </div>
-                    </div>
-                </nav>
-        <br/>
-
         </div>
     </section>
 
-    <!-- TODO: fix dis. it don't work -->
+    <!-- <section class="hero is-black is-fullheight is-bold" id="preise">
+        <div class="hero-body">
+            <div class="container">
+                <div class="column">
+                    <h1 class="title has-text-white-bis is-size-1">
+                        Es gibt tolle Preise!
+                    </h1>
+                    <h3 class="subtitle has-text-white-bis is-size-5">
+                        und gratis Essen und Getränke...
+                    </h3>
+                    <br />
+                </div>
+                <div class="column">
+                    <p class="is-size-3">
+                        <span class="is-size-1">• </span> ein Raspberry Pi 3b+ für die
+                        beste Team
+                    </p>
+                    <p class="is-size-3">
+                        <span class="is-size-1">• </span> USB Sticks für die zweit-besten
+                    </p>
+                    <p class="is-size-3">
+                        <span class="is-size-1">• </span> Dingdings für den Rest
+                    </p>
+                    <p class="is-size-3">
+                        <span class="is-size-1">• </span> und mehr !
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <section class="hero is-fullheight is-bold" id="kenntnisse">
+        <div class="hero-body">
+            <div class="container">
+                <div class="column is-half is-offset-3 has-text-centered">
+                    <h1 class="title has-text-black-bis is-size-1">
+                        Was muss man da alles machen?
+                    </h1>
+                    <br />
+                </div>
+
+                <div class="column is-half-desktop is-offset-3-desktop box has-text-centered ">
+                    <br />
+                    <h1 class="title has-text-black-bis is-size-1">
+                        <a href="#" class="has-text-success">Getting Started</a>
+                    </h1>
+                    <h2 class="subtitle has-text-black-bis is-size-3">
+                        Lerne mit dem Splunk<br />Umgebung umzugehen ...
+                    </h2>
+                    <br />
+                </div>
+
+                <br />
+                <br />
+
+                <div class="column is-full">
+                    <div class="columns is-desktop">
+                        <!-- THE first and second element have some extra suggar! -->
+                        <div class="column box has-text-centered" style="margin-right: 2em;">
+                            <br />
+                            <h1 class="title has-text-black-bis is-size-1">BIG DATA</h1>
+                            <br />
+                            <h3 class="subtitle has-text-black-bis is-size-3">
+                                Blah blah blah blah
+                            </h3>
+                            <img src="wallpaper.jpg" alt="dickbutt" />
+                            <br />
+                            <br />
+                            <a class="is-size-3 has-text-success" href="#">mehr dazu ...</a>
+                        </div>
+                        <!-- The gap is set by hand, because I couldn't do it w/ the -->
+                        <div class="column box has-text-centered">
+                            <br />
+                            <h1 class="title has-text-black-bis is-size-1">Suche</h1>
+                            <br />
+                            <h3 class="subtitle has-text-black-bis is-size-3">
+                                Blah blah blah blah
+                            </h3>
+                            <img src="wallpaper.jpg" alt="dickbutt" />
+                            <br />
+                            <br />
+                            <a class="is-size-3 has-text-success" href="#">mehr dazu ...</a>
+                            <br />
+                            <br />
+                        </div>
+
+                        <div class="column box has-text-centered" style="margin-left: 2em; margin-bottom: 1.5em;">
+                            <br />
+                            <h1 class="title has-text-black-bis is-size-1">Dashboards</h1>
+                            <br />
+                            <h3 class="subtitle has-text-black-bis is-size-3">
+                                Blah blah blah blah
+                            </h3>
+                            <img src="wallpaper.jpg" alt="dickbutt" />
+                            <br />
+                            <br />
+                            <a class="is-size-3 has-text-success" href="#">mehr dazu ...</a>
+                            <br />
+                            <br />
+                        </div>
+
+                        <!-- Had a bug where the last box was too long -->
+                    </div>
+                </div>
+
+                <br />
+                <br />
+
+                <a href="#anmelden"
+                    class="column is-half is-offset-3 box has-text-black-bis has-text-centered is-size-1">Anmelden</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="anmelden" class="hero is-black is-fullheight is-bold">
+        <div class="hero-body">
+            <div class="container">
+                <br />
+                <div class="column is-half-desktop is-offset-3-desktop has-text-centered">
+                    <h1 class="title has-text-white-bis is-size-1">
+                        Location und Zeit
+                    </h1>
+                    <h1 class="title has-text-success is-size-1 has-text-success">
+                        Robert-Mayer-Straße 11
+                    </h1>
+                    <h1 class="title has-text-link is-size-1 has-text-link">
+                        15. August - 14:00 Uhr
+                    </h1>
+                </div>
+
+                <br />
+                <br />
+
+                <!-- Here cometh the form -->
+                <form method="POST" action="https://formspree.io/kid@cocaine.ninja">
+                    <div class="column has-text-black-bis is-half-desktop is-offset-one-quarter box has-text-centered">
+
+                        <br />
+                        <!-- <input type="email" name="email" placeholder="Deine Email"> -->
+                        <!-- <input name="message" placeholder="Deinen Namen"> -->
+
+                        <!-- <h1 class="title has-text-black-bis is-size-1">
+                            Anmelden
+                        </h1> -->
+                        <div class="column field">
+                            <label class="label has-text-left">Name</label>
+                            <div class="control">
+                                <input class="input is-large" type="text" placeholder="Name">
+                            </div>
+                        </div>
+                        <div class="column field">
+                            <label class="label has-text-left">Email</label>
+                            <div class="control has-icons-left has-icons-right">
+                                <input class="input is-large" type="email" placeholder="Email" value="">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                                <!-- <span class="icon is-small is-right">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </span> -->
+                            </div>
+                            <!-- <p class="help is-danger">This email is invalid</p> -->
+                        </div>
+                        <!--<textarea name="message" placeholder="Test Message"></textarea>-->
+                        <!-- <button type="submit">Send Test</button> -->
+
+                        <br />
+
+                        <div class="control">
+                            <!-- <button type="submit" class="button is-link">Submit</button> -->
+                            <button type="submit"
+                                class="column button is-two-thirds is-offset-2 has-text-black-bis has-text-centered is-size-3">Submit</button>
+
+
+
+                            <!-- <a href="#anmelden" class="column is-one-third is-offset-4 box has-text-black-bis has-text-centered is-size-1">Anmelden</a> -->
+                        </div>
+                        <br />
+                    </div>
+                </form>
+
+
+                <br />
+                <br />
+                <br />
+
+            </div>
+        </div>
+
+        <iframe style="width: 100%; height: 36vh; margin-top: -4.2em;"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1279.181578906611!2d8.649380423508171!3d50.11692605629113!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bd095b7e9ff109%3A0xb9b299761a42c0c1!2sPr%C3%BCfungsamt+Informatik!5e0!3m2!1sen!2suk!4v1560006167301!5m2!1sen!2suk"
+            width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+        <br />
+        <br />
+
+        <!-- nav at the bottom -->
+        <div class="hero-foot">
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+                <div class="navbar-brand" style="margin-left:5em;">
+                    <a class="navbar-item is-size-3 has-text-link" href="#">
+                        CONSIST
+                    </a>
+
+                    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+                        style="margin-right:5em;">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+
+                <div class="navbar-menu" id="navMenu">
+                    <div class="navbar-end" style="margin-right:5em;">
+                        <a href="#home" class="navbar-item">
+                            Home
+                        </a>
+
+                        <a href="#hackathon" class="navbar-item">
+                            Hackathon
+                        </a>
+
+                        <!-- <a href="#preise" class="navbar-item">
+                            Preise
+                        </a> -->
+
+                        <a href="#kenntnisse" class="navbar-item">
+                            Kenntnisse
+                        </a>
+                    </div>
+                </div>
+            </nav>
+            <br />
+        </div>
+    </section>
+
+    <!-- TODO: fix the burger menu -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener("DOMContentLoaded", () => {
+            // Get all "navbar-burger" elements
+            const $navbarBurgers = Array.prototype.slice.call(
+                document.querySelectorAll(".navbar-burger"),
+                0
+            );
 
-        // Get all "navbar-burger" elements
-        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+            // Check if there are any navbar burgers
+            if ($navbarBurgers.length > 0) {
+                // Add a click event on each of them
+                $navbarBurgers.forEach(el => {
+                    el.addEventListener("click", () => {
+                        // Get the target from the "data-target" attribute
+                        const target = el.dataset.target;
+                        const $target = document.getElementById(target);
 
-        // Check if there are any navbar burgers
-        if ($navbarBurgers.length > 0) {
-
-        // Add a click event on each of them
-        $navbarBurgers.forEach( el => {
-            el.addEventListener('click', () => {
-
-            // Get the target from the "data-target" attribute
-            const target = el.dataset.target;
-            const $target = document.getElementById(target);
-
-            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-            el.classList.toggle('is-active');
-            $target.classList.toggle('is-active');
-
-            });
-        });
-        }
-
+                        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                        el.classList.toggle("is-active");
+                        $target.classList.toggle("is-active");
+                    });
+                });
+            }
         });
     </script>
 </body>
+
 </html>
