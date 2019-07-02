@@ -45,12 +45,27 @@ Once there, you can download [this dataset](#) and upload it to Splunk by either
 
 ![This is should see](./dindindin.png)
 
-- use the right time-span
+This is the place you'll be spending most of your time. You already have an initial search command which shows you only the data you've imported.
 
-> - Using SPL commands to find and filter the data to include just the events you're looking for
-> - Selecting the shortest time range that the events occurred in, or the time range you want to inspect if you're looking for something
+The search command is written in the **Search Processing Language (SPL)**. All your searches are based around two factors:
+
+- finding and filtering the data to include only the events you're looking for
+- selecting the appropriate time range the events occured in.
+
+On the left panel you can see fields that Splunk has recognised under **IMPORTANT FIELDS**.
+
+Clicking on the **status** field shows you exactly which status codes and how often they show up in the dataset, giving up very powerful information - how the server performs - at a glance. There you also find a couple of quick useful searches under **Reports**.
 
 ## The SPL language
+
+- image with the dissection of an search command
+- how do you search:
+
+1. Specify an index and time range that will retrieve all of the events you're interested in.
+2. Add filters to better specify and reduce the number of events to just those you want to work with, and eliminate the rest.
+3. Progressively pipe the events/data to the next command plus any applicable arguments and check that you get what you expected from each step.
+4. Pipe the final dataset to a table, chart, or time chart for visualization and adjust the visualisation settings.
+5. When the search is working as desired, save it to a report, dashboard panel, or alert as desired.
 
 ## Search filters
 
