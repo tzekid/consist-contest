@@ -1,5 +1,7 @@
 # Getting Started with Splunk
 
+<!-- Get a better dataset. Use it in all examples (esp. spl commands) -->  
+
 What you'll learn from this article:
 
 - What is splunk
@@ -8,8 +10,8 @@ What you'll learn from this article:
 - Essential splunkweb interface features and controls
 - How to write basic Search Processing Language (SPL) search strings
 - How to create filters to reduce the amount of data returned from searches
-- How to use the two most powerful search commands - `eval` and `stats`
-- How to visualize search results
+
+<!-- strechgoals for the future: visualisation and dashboards -->
 
 ## What is Splunk
 
@@ -83,8 +85,6 @@ Here are the basic steps to building a SPL search string:
 4. Pipe the final dataset to a table, chart, or time chart for visualization and adjust the visualisation settings.
 5. When the search is working as desired, save it to a report, dashboard panel, or alert as desired.
 
-<!-- image with the five steps ? -->
-
 ### Search filters
 
 Applying filters is essential in isolating the search results to just the events that interest you.
@@ -105,8 +105,9 @@ There are two very important commands in SPL, `eval` and `stats`, but in this se
 
 The `stats` command is used to perform statistical functions. Here are some examples with the fictional value of "time_traveled":
 
-| `avg(x)`          | `stats avg(time_traveled) as average_travel_time` |
+| Function          | Example                                           |
 | ----------------- | ------------------------------------------------- |
+| `avg(x)`          | `stats avg(time_traveled) as average_travel_time` |
 | `count(x)`        | `stats count(time_traveled) by time_traveled`     |
 | `max(x) / min(x)` | `stats max(time_traveled) as longest_travel_time` |
 | `sum(x)`          | `stats sum(time_traveled) as total_travel_time`   |
@@ -117,19 +118,13 @@ The returned value of these functions has the name given after the `as` keyword,
 
 You can get more info on [Eval](http://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Eval) and [Stats](http://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Stats) in the official documentation.
 
-## Visualizing search results
-
-- chart
-- timechart
-- visualisation types
-
 ## Next steps
 
-- the [search tutorial](https://docs.splunk.com/Documentation/Splunk/latest/SearchTutorial/WelcometotheSearchTutorial) is a great way to start
+Things that we did not cover in this article that you should definetly look up are ways to visualize your data and creating dashboards. Splunk has a [getting started article](https://docs.splunk.com/Documentation/Splunk/latest/Viz/Aboutthismanual) for both these topics.
 
-- packt's "[Splunk 7.x Quick Start Guide](https://www.packtpub.com/eu/big-data-and-business-intelligence/splunk-7x-quick-start-guide)".
+The next best thing you can do is play around with the dataset you have previously downloaded. Or better yet, you can go to a site like [kaggle](https://www.kaggle.com/datasets) to find a dataset that you may like to Splunk.
 
-
+There is the [official tutorial](https://docs.splunk.com/Documentation/Splunk/latest/SearchTutorial/WelcometotheSearchTutorial) for Splunk you can go through if you want to learn more and the book we highly recommend is [Splunk 7.x Quick Start Guide](https://www.packtpub.com/eu/big-data-and-business-intelligence/splunk-7x-quick-start-guide).
 
 ---
 
