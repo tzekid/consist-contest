@@ -58,8 +58,10 @@ Clicking on the **status** field shows you exactly which status codes and how of
 
 ## The SPL language
 
-- image with the dissection of an search command
-- how do you search:
+- pipes
+- commands and resources
+
+- process of searching:
 
 1. Specify an index and time range that will retrieve all of the events you're interested in.
 2. Add filters to better specify and reduce the number of events to just those you want to work with, and eliminate the rest.
@@ -67,15 +69,28 @@ Clicking on the **status** field shows you exactly which status codes and how of
 4. Pipe the final dataset to a table, chart, or time chart for visualization and adjust the visualisation settings.
 5. When the search is working as desired, save it to a report, dashboard panel, or alert as desired.
 
-## Search filters
+### Search filters
 
-## Search commands
+- sourcetype --- `sourcetype=access_combined`
+- field specifiers or text strings --- `buttercup`
+- AND --- `sourcetype=access_combined AND status >= 400 AND "login"`
+- NOT & OR --- `sourcetype=*access* (status = 400 OR status = 404) NOT "login"`
+
+### Search commands
+
+- ( if, max, min )
+- stats := avg, count
+-  where
 
 ## Visualizing search results
 
+- chart
+- timechart
+- visualisation types
 
 
 
+Recommend The O'Rlly book "Splunk 7.x Quick Start Guide".
 
 
 
