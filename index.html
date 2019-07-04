@@ -1,11 +1,10 @@
 <!-- TODOs:
-    - [ ] countdown timer
-    - [ ] images & text for 'prices'
+    - [x] countdown timer
     - [ ] mobile (& fix search|dashboards|BD containers)
     - [ ] burger menu for mobile
-    - [ ] custom maps ?
-    - [ ] articles
-        - [ ] getting started
+    - [x] custom maps ?
+    - [/] articles
+        - [x] getting started
         - [ ] big data
         - [ ] search
         - [ ] dashboards
@@ -30,8 +29,18 @@
             font-family: 'Comfortaa', cursive;
         }
 
+        .is-foobar {
+            background-color: #0d111a;
+        }
+
+        .has-text-foobar {
+            color: #0d111a;
+        }
+
         .night {
+            /* background: url(wallpaper.jpg) no-repeat center center fixed; */
             background: url(wallpaper.jpg) no-repeat center center;
+            background-size: cover;
         }
 
         @media (max-width: 480px) {
@@ -42,7 +51,6 @@
         }
     </style>
 
-    <!-- <script>if (location.protocol !== 'https:') location.protocol = 'https:';</script> -->
 </head>
 
 <body>
@@ -51,11 +59,11 @@
             <div class="container">
                 <div class="column is-two-thirds is-offset-2 box has-text-centered">
                     <br />
-                    <h1 class="title has-text-black-bis is-size-1">
+                    <h1 class="title has-text-foobar is-size-1">
                         <span class="has-text-success">Splunk</span> BIG DATA Hackathon
                     </h1>
-                    <h2 class="subtitle has-text-black-bis is-size-4">
-                        Powered by <span class="has-text-link">CONSIST Software Solutions GmbH</span> 
+                    <h2 class="subtitle has-text-foobar is-size-4">
+                        Powered by <span class="has-text-link">CONSIST Software Solutions GmbH</span>
                     </h2>
                     <br />
                 </div>
@@ -63,30 +71,33 @@
                 <br />
                 <!-- <br/> -->
 
-                <div class="column has-text-black-bis is-half is-offset-one-quarter box has-text-centered">
+                <div class="column has-text-foobar is-half is-offset-one-quarter box has-text-centered">
                     <h1 class="is-size-1">Frankfurt am Main
-					
-					</h1>
-					<h2 class="is-size-2">
-					Goethe Uni, Campus Bockenheim
-					</h2>
+
+                    </h1>
+                    <h2 class="is-size-2">
+                        Goethe Uni, Campus Bockenheim
+                    </h2>
                     <h3 class="is-size-3">
                         <span class="has-text-link">15. August</span>
                     </h3>
                     <br />
                     <h5 class="is-size-6">Startet in ...</h5>
                     <br />
+
+                    <div id="clockdiv">
+                        <span class="days"> days</span> <span class="hours"></span> h <span class="minutes"></span> min
+                        <span class="seconds"></span> s
+                    </div>
                     <!-- TODO: Countdown -->
                 </div>
 
                 <br />
-                <!-- <br/> -->
 
                 <a href="#anmelden"
-                    class="column is-one-third is-offset-4 box has-text-black-bis has-text-centered is-size-1">Anmelden</a>
+                    class="column is-one-third is-offset-4 box has-text-foobar has-text-centered is-size-1">Anmelden</a>
 
                 <br />
-                <!-- <br/> -->
 
                 <div class="column has-text-centered">
                     <a href="#hackathon"><i class="has-text-light fas fa-chevron-down fa-4x"></i></a>
@@ -95,168 +106,138 @@
         </div>
     </section>
 
-    <section class="hero is-fullheight is-bold is-black" id="hackathon">
+    <section class="hero is-fullheight is-bold is-foobar" id="hackathon">
         <div class="hero-body">
             <div class="container">
                 <div class="column is-half-desktop is-offset-3-desktop has-text-centered">
                     <h1 class="title has-text-white-bis is-size-1">
                         Was ist ein Hackathon?
                     </h1>
-                    
+
                 </div>
 
-                <div class="column has-text-centered has-text-white-darker">
+                <div class="column has-text-centered has-text-white">
                     <p class="is-size-3">
-					Hackathons sind Veranstaltungen, in denen die Teilnehmenden eine Problemstellung mithilfe einer Programmiersprache lösen sollen.
-					<br/>
-				</div>
-					
-					<br/><br/>
-					
-				<div class="column is-half-desktop is-offset-3-desktop has-text-centered">
+                        Hackathons sind Veranstaltungen, in denen die Teilnehmenden eine Problemstellung mithilfe einer
+                        Programmiersprache lösen sollen.
+                        <br />
+                </div>
+
+                <br /><br />
+
+                <div class="column is-half-desktop is-offset-3-desktop has-text-centered">
                     <h1 class="title has-text-white-bis is-size-1">
                         Wer kann mitmachen?
                     </h1>
-                    
+
                 </div>
 
-<div class="column has-text-centered has-text-white-darker">
-                    <p class="is-size-3">				
-					Jeder mit Interesse an IT-bezogenen Themen und mit der nötigen Menge an Kreativität ist willkommen. Dabei kommt es uns nicht auf dein Alter, Geschlecht oder Skill-Level an!  
-					
-					
+                <div class="column has-text-centered has-text-white">
+                    <p class="is-size-3">
+                        Jeder mit Interesse an IT-bezogenen Themen und mit der nötigen Menge an Kreativität ist
+                        willkommen. Dabei kommt es uns nicht auf dein Alter, Geschlecht oder Skill-Level an!
                     </p>
-					
-					</div>
-                    <br /><br />
-                    <p class="is-size-3 has-text-centered">
-                        Ob du alleine oder mit deinen Kommilitonen erscheinst spielt keine Rolle, da Teams auch vor Ort gebildet werden können.
-                    </p>
-                    <br /><br />
-                
-                
+
+                </div>
+                <br /><br />
+                <p class="is-size-3 has-text-centered has-text-white">
+                    Ob du alleine oder mit deinen Kommilitonen erscheinst spielt keine Rolle, da Teams auch vor Ort
+                    gebildet werden können.
+                </p>
+                <br /><br />
 
                 <a href="#anmelden"
-                    class="column is-one-third is-offset-4 box has-text-black-bis has-text-centered is-size-1">Anmelden</a>
+                    class="column is-one-third is-offset-4 box has-text-foobar has-text-centered is-size-1">Anmelden</a>
             </div>
         </div>
     </section>
-
-    <!-- <section class="hero is-black is-fullheight is-bold" id="preise">
-        <div class="hero-body">
-            <div class="container">
-                <div class="column">
-                    <h1 class="title has-text-white-bis is-size-1">
-                        Es gibt tolle Preise!
-                    </h1>
-                    <h3 class="subtitle has-text-white-bis is-size-5">
-                        und gratis Essen und Getränke...
-                    </h3>
-                    <br />
-                </div>
-                <div class="column">
-                    <p class="is-size-3">
-                        <span class="is-size-1">• </span> ein Raspberry Pi 3b+ für die
-                        beste Team
-                    </p>
-                    <p class="is-size-3">
-                        <span class="is-size-1">• </span> USB Sticks für die zweit-besten
-                    </p>
-                    <p class="is-size-3">
-                        <span class="is-size-1">• </span> Dingdings für den Rest
-                    </p>
-                    <p class="is-size-3">
-                        <span class="is-size-1">• </span> und mehr !
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section> -->
 
     <section class="hero is-fullheight is-bold" id="kenntnisse">
         <div class="hero-body">
             <div class="container">
                 <div class="column is-half is-offset-3 has-text-centered">
-                    <h1 class="title has-text-black-bis is-size-1">
+                    <h1 class="title has-text-foobar is-size-1">
                         Was muss man da alles machen?
                     </h1>
                     <br />
                 </div>
-
-                <div class="column is-half-desktop is-offset-3-desktop box has-text-centered ">
-                    <br />
-                    <h1 class="title has-text-black-bis is-size-1">
-                        <a href="#" class="has-text-success">Getting Started</a>
-                    </h1>
-                    <h2 class="subtitle has-text-black-bis is-size-3">
-                        Lerne mit der Splunk-Umgebung umzugehen ...
-                    </h2>
-                    <br />
-                </div>
-
-                <br />
-                <br />
 
                 <div class="column is-full">
                     <div class="columns is-desktop">
                         <!-- THE first and second element have some extra suggar! -->
                         <div class="column box has-text-centered" style="margin-right: 2em;">
                             <br />
-                            <h1 class="title has-text-black-bis is-size-1">BIG DATA</h1>
+                            <h1 class="title has-text-foobar is-size-1">BIG DATA</h1>
                             <br />
-                            <h3 class="subtitle has-text-black-bis is-size-3">
-                                Was genau ist "Big Data" und warum ist es so wichtig?
+                            <h3 class="subtitle has-text-foobar is-size-3">
+                                Was genau ist "Big Data" & warum ist es wichtig?
                             </h3>
                             <img src="wallpaper.jpg" alt="(Bild)" />
                             <br />
                             <br />
-                            <a class="is-size-3 has-text-success" href="#">mehr dazu ...</a>
+                            <!-- <a class="is-size-3 has-text-success" href="#">mehr dazu ...</a> -->
                         </div>
                         <!-- The gap is set by hand, because I couldn't do it w/ the -->
                         <div class="column box has-text-centered">
                             <br />
-                            <h1 class="title has-text-black-bis is-size-1">Suche</h1>
+                            <h1 class="title has-text-foobar is-size-1">Suche</h1>
                             <br />
-                            <h3 class="subtitle has-text-black-bis is-size-3">
+                            <h3 class="subtitle has-text-foobar is-size-3">
                                 Wie sind Suchen in Splunk aufgebaut?
                             </h3>
                             <img src="wallpaper.jpg" alt="(Bild)" />
-                            <br />
-                            <br />
-                            <a class="is-size-3 has-text-success" href="#">mehr dazu ...</a>
+                            <!-- <br /> -->
+                            <!-- <br /> -->
+                            <!-- <a class="is-size-3 has-text-success" href="#">mehr dazu ...</a> -->
                             <br />
                             <br />
                         </div>
 
+                        <!-- <div class="column box has-text-centered" style="margin-left: 2em; margin-bottom: 1.5em;"> -->
                         <div class="column box has-text-centered" style="margin-left: 2em; margin-bottom: 1.5em;">
                             <br />
-                            <h1 class="title has-text-black-bis is-size-1">Dashboards</h1>
+                            <h1 class="title has-text-foobar is-size-1">Dashboards</h1>
                             <br />
-                            <h3 class="subtitle has-text-black-bis is-size-3">
+                            <h3 class="subtitle has-text-foobar is-size-3">
                                 Wie erstelle ich Dashboards in Splunk?
                             </h3>
                             <img src="wallpaper.jpg" alt="(Bild)" />
                             <br />
                             <br />
-                            <a class="is-size-3 has-text-success" href="#">mehr dazu ...</a>
-                            <br />
-                            <br />
+                            <!-- <a class="is-size-3 has-text-success" href="#">mehr dazu ...</a> -->
+                            <!-- <br /> -->
+                            <!-- <br /> -->
                         </div>
 
+
+
+
                         <!-- Had a bug where the last box was too long -->
+                    </div>
+
+                    <div class="column is-half-desktop is-offset-3-desktop box has-text-centered ">
+                        <br />
+                        <h2 class="subtitle has-text-foobar is-size-3">
+                            Lerne mit der Splunk-Umgebung umzugehen mit unseren...
+                        </h2>
+                        <br />
+                        <h1 class="title has-text-foobar is-size-1">
+                            <a href="#" class="has-text-success">Getting Started</a>
+                        </h1>
+                        <br />
                     </div>
                 </div>
 
                 <br />
                 <br />
 
-                <a href="#anmelden"
-                    class="column is-half is-offset-3 box has-text-black-bis has-text-centered is-size-1">Anmelden</a>
+                <!-- <a href="#anmelden"
+                    class="column is-half is-offset-3 box has-text-foobar has-text-centered is-size-1">Anmelden</a> -->
             </div>
         </div>
     </section>
 
-    <section id="anmelden" class="hero is-black is-fullheight is-bold">
+    <section id="anmelden" class="hero is-foobar is-fullheight is-bold">
         <div class="hero-body">
             <div class="container">
                 <br />
@@ -268,7 +249,7 @@
                         Robert-Mayer-Straße 11
                     </h1>
                     <h1 class="title has-text-link is-size-1 has-text-link">
-                        15. August <br/> 14:00 bis 22:00 Uhr
+                        15. August <br /> 14:00 bis 22:00 Uhr
                     </h1>
                 </div>
 
@@ -277,15 +258,9 @@
 
                 <!-- Here cometh the form -->
                 <form method="POST" action="https://formspree.io/kid@cocaine.ninja">
-                    <div class="column has-text-black-bis is-half-desktop is-offset-one-quarter box has-text-centered">
+                    <div class="column has-text-foobar is-half-desktop is-offset-one-quarter box has-text-centered">
 
                         <br />
-                        <!-- <input type="email" name="email" placeholder="Deine Email"> -->
-                        <!-- <input name="message" placeholder="Deinen Namen"> -->
-
-                        <!-- <h1 class="title has-text-black-bis is-size-1">
-                            Anmelden
-                        </h1> -->
                         <div class="column field">
                             <label class="label has-text-left">Name</label>
                             <div class="control">
@@ -299,25 +274,14 @@
                                 <span class="icon is-small is-left">
                                     <i class="fas fa-envelope"></i>
                                 </span>
-                                <!-- <span class="icon is-small is-right">
-                                <i class="fas fa-exclamation-triangle"></i>
-                            </span> -->
                             </div>
-                            <!-- <p class="help is-danger">This email is invalid</p> -->
                         </div>
-                        <!--<textarea name="message" placeholder="Test Message"></textarea>-->
-                        <!-- <button type="submit">Send Test</button> -->
 
                         <br />
 
                         <div class="control">
-                            <!-- <button type="submit" class="button is-link">Submit</button> -->
                             <button type="submit"
-                                class="column button is-two-thirds is-offset-2 has-text-black-bis has-text-centered is-size-3">Submit</button>
-
-
-
-                            <!-- <a href="#anmelden" class="column is-one-third is-offset-4 box has-text-black-bis has-text-centered is-size-1">Anmelden</a> -->
+                                class="column button is-two-thirds is-offset-2 has-text-foobar has-text-centered is-size-3">Submit</button>
                         </div>
                         <br />
                     </div>
@@ -342,7 +306,7 @@
         <div class="hero-foot">
             <nav class="navbar" role="navigation" aria-label="main navigation">
                 <div class="navbar-brand" style="margin-left:5em;">
-                    <a class="navbar-item is-size-3 has-text-link" href="#">
+                    <a class="navbar-item is-size-3 has-text-link" href="consist.de">
                         CONSIST Software Solutions GmbH
                     </a>
 
@@ -378,8 +342,63 @@
         </div>
     </section>
 
-    <!-- TODO: fix the burger menu -->
+
     <script>
+        // endtime eg.: 'November 9 1938 23:59:59 GMT+0200'
+        function getTimeRemaining(endtime) {
+            var t = Date.parse(endtime) - Date.parse(new Date());
+            var seconds = Math.floor((t / 1000) % 60);
+            var minutes = Math.floor((t / 1000 / 60) % 60);
+            var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+            var days = Math.floor(t / (1000 * 60 * 60 * 24));
+            return {
+                'total': t,
+                'days': days,
+                'hours': hours,
+                'minutes': minutes,
+                'seconds': seconds
+            };
+        }
+
+        let deadline = 'August 14 2019 14:00:00 GMT+0100';
+
+        function initializeClock(id, endtime) {
+            var clock = document.getElementById(id);
+            var daysSpan = clock.querySelector('.days');
+            var hoursSpan = clock.querySelector('.hours');
+            var minutesSpan = clock.querySelector('.minutes');
+            var secondsSpan = clock.querySelector('.seconds');
+
+            function updateClock() {
+                var t = getTimeRemaining(endtime);
+
+                daysSpan.innerHTML = t.days;
+                hoursSpan.innerHTML = t.hours;
+                minutesSpan.innerHTML = t.minutes;
+                secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+                /* <span class="days"> days</span> <span class="hours"></span> h <span class="minutes"></span> min <span class="seconds"></span> s */
+
+                clock.innerHTML = '<b>' + t.days + '</b>' + ' days ' + '<b>' + t.hours + '</b>' + ' hours ' + '<b>' + t.minutes + '</b>' + ' minutes ' + '<b>' + t.seconds + '</b>' + ' seconds';
+
+                // clock.innerHTML = 'days: ' + t.days + '<br>' +
+                //     'hours: ' + t.hours + '<br>' +
+                //     'minutes: ' + t.minutes + '<br>' +
+                //     'seconds: ' + t.seconds;
+                if (t.total <= 0) {
+                    clearInterval(timeinterval);
+                }
+            }
+
+            updateClock(); // run function once at first to avoid delay
+            var timeinterval = setInterval(updateClock, 1000);
+        }
+
+        let html_div = "clockdiv";
+        initializeClock(html_div, deadline)
+    </script>
+
+    <!-- <script>
         document.addEventListener("DOMContentLoaded", () => {
             // Get all "navbar-burger" elements
             const $navbarBurgers = Array.prototype.slice.call(
@@ -403,7 +422,7 @@
                 });
             }
         });
-    </script>
+    </script> -->
 </body>
 
 </html>

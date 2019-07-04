@@ -114,7 +114,7 @@ The `stats` command is used to perform statistical functions. Here are some exam
 
 The returned value of these functions has the name given after the `as` keyword, like `average_travel_time` above. If there's no `as` present, then the function name will be shown instead, like the `count(time_traveled)` above.
 
-- short sparkline example (and screenshot)
+<!-- short sparkline example (and screenshot) -->
 
 You can get more info on [Eval](http://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Eval) and [Stats](http://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Stats) in the official documentation.
 
