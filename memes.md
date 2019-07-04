@@ -21,7 +21,7 @@ That's where Splunk comes in and collects all this machine data in one place mak
 
 ## How to install Splunk
 
-Before doing anything you have to install Splunk. To do that, you have to go on their page and [create a new account](https://www.splunk.com/page/sign_up?redirecturl=https://ilieploscaru.xyz). After you've done that, log in and [download their client](https://www.splunk.com/en_us/download/splunk-enterprise.html) on the platform of your choice. For more instructions on that, have a look at [the official docs](https://docs.splunk.com/Documentation/Splunk/7.2.6/Installation/Chooseyourplatform). 
+Before doing anything you have to install Splunk. To do that, you have to go on their page and [create a new account](https://www.splunk.com/page/sign_up?redirecturl=https://hackathon.consist.de). After you've done that, log in and [download their client](https://www.splunk.com/en_us/download/splunk-enterprise.html) on the platform of your choice. For more instructions on that, have a look at [the official docs](https://docs.splunk.com/Documentation/Splunk/latest/Installation/Chooseyourplatform). 
 
 After you've successfully installed it, open your browser and enter  `http://localhost:8000/` in the URL bar.
 
@@ -73,7 +73,7 @@ Newlines are inserted by pressing <kbd>Ctrl</kbd> + <kbd>Enter</kbd> simultaniou
 
 Effective searches can be created by following some basic steps, by building search commands progressively and iteratively, always making sure that you get the results you expect and understanding what each command does.
 
-There are a couple of resources to go through if you don't know how a command works, like the Splunk [docs](https://docs.splunk.com/Documentation) or [answers](https://answers.splunk.com/index.html) or [StackOverflow](https://stackoverflow.com/questions/tagged/splunk). Review the examples given and experiment with the command until you are confident in using it yourself.
+There are a couple of resources to go through if you don't know how a command works, like the Splunk [(sp)lexicon](https://docs.splunk.com/Splexicon) or [docs](https://docs.splunk.com/Documentation) or [answers](https://answers.splunk.com/index.html) or look it up on [StackOverflow](https://stackoverflow.com/questions/tagged/splunk). Review the examples given and experiment with the command until you are confident in using it yourself.
 
 Here are the basic steps to building a SPL search string:
 
@@ -87,18 +87,35 @@ Here are the basic steps to building a SPL search string:
 
 ### Search filters
 
+Applying filters is essential in isolating the search results to just the events that interest you.
 
+You can search by keywords, text strings or simple logic statements. A statement that has all of these is: ` "addtocart" AND status >= 400`
 
-- sourcetype --- `sourcetype=access_combined`
-- field specifiers or text strings --- `buttercup`
-- AND --- `sourcetype=access_combined AND status >= 400 AND "login"`
-- NOT & OR --- `sourcetype=*access* (status = 400 OR status = 404) NOT "login"`
+There is an implied `AND` between all filter parts in a search command, so we could rewrite the previous one as: `"addtocart" status >= 400`.
+
+This command shows all events that contain the text string "addtocart" and has a keyword "status" with a value bigger or equal to 400.
+
+You can also specify other logic tools like `OR` or `NOT` in your search filters, use parantheses for grouping or utilise [wildcards](https://docs.splunk.com/Documentation/Splunk/latest/Search/Wildcards) (asterisks). Using `NOT` and wildcards a lot can be heavy and slow down your searches, so use them wisely. 
+
+Here's another example that uses all of these search tools: `sourcetype=*access* (status = 400 OR status = 404) NOT "addtocart"`.
 
 ### Search commands
 
-- ( if, max, min )
-- stats := avg, count
--  where
+There are two very important commands in SPL, `eval` and `stats`, but in this section we will only cover `stats`.
+
+The `stats` command is used to perform statistical functions. Here are some examples with the fictional value of "time_traveled":
+
+| `avg(x)`          | `stats avg(time_traveled) as average_travel_time` |
+| ----------------- | ------------------------------------------------- |
+| `count(x)`        | `stats count(time_traveled) by time_traveled`     |
+| `max(x) / min(x)` | `stats max(time_traveled) as longest_travel_time` |
+| `sum(x)`          | `stats sum(time_traveled) as total_travel_time`   |
+
+The returned value of these functions has the name given after the `as` keyword, like `average_travel_time` above. If there's no `as` present, then the function name will be shown instead, like the `count(time_traveled)` above.
+
+- short sparkline example (and screenshot)
+
+You can get more info on [Eval](http://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Eval) and [Stats](http://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Stats) in the official documentation.
 
 ## Visualizing search results
 
@@ -106,6 +123,18 @@ Here are the basic steps to building a SPL search string:
 - timechart
 - visualisation types
 
+## Next steps
+
+- the [search tutorial](https://docs.splunk.com/Documentation/Splunk/latest/SearchTutorial/WelcometotheSearchTutorial) is a great way to start
+
+- packt's "[Splunk 7.x Quick Start Guide](https://www.packtpub.com/eu/big-data-and-business-intelligence/splunk-7x-quick-start-guide)".
 
 
-<!-- TODO --> Recommend The O'Rlly book "Splunk 7.x Quick Start Guide".
+
+---
+
+# Big Data
+
+# Search
+
+# Dashboards
