@@ -7,7 +7,10 @@ pandoc -t html5 -s --toc --katex -c pandoc.css --metadata pagetitle="Getting Sta
 # add <article> tags
 
 # TODO
-# [ ] create a header / footer. try to implement floating footnotes.
+# [ ] create a header / footer
+# [ ] try to implement floating footnotes.
+# [ ] go back arrow
+# [ ] change pandoc.css to fit the style
 -->
 
 <!-- Get a better dataset. Use it in all examples (esp. spl commands) -->  
@@ -20,6 +23,7 @@ What you'll learn from this article:
 - Essential splunkweb interface features and controls
 - How to write basic Search Processing Language (SPL) search strings
 - How to create filters to reduce the amount of data returned from searches
+- How to visualize searches and create dashboards (TBD)
 
 <!-- strechgoals for the future: visualisation and dashboards -->
 
@@ -128,6 +132,10 @@ The returned value of these functions has the name given after the `as` keyword,
 
 You can get more info on [Eval](http://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Eval) and [Stats](http://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Stats) in the official documentation.
 
+## Visualizing Searches
+
+## Creating Dashboards
+
 ## Next steps
 
 Things that we did not cover in this article that you should definetly look up are ways to visualize your data and creating dashboards. Splunk has a [getting started article](https://docs.splunk.com/Documentation/Splunk/latest/Viz/Aboutthismanual) for both these topics.
@@ -137,9 +145,9 @@ The next best thing you can do is play around with the dataset you have previous
 There is the [official tutorial](https://docs.splunk.com/Documentation/Splunk/latest/SearchTutorial/WelcometotheSearchTutorial) for Splunk you can go through if you want to learn more and the book we highly recommend is [Splunk 7.x Quick Start Guide](https://www.packtpub.com/eu/big-data-and-business-intelligence/splunk-7x-quick-start-guide).
 
 ---
-
+<!-- 
 # Big Data
 
 # Search
 
-# Dashboards
+# Dashboards -->
