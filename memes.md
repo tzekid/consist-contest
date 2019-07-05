@@ -1,5 +1,15 @@
 # Getting Started with Splunk
 
+<!--
+# compile with:
+pandoc -t html5 -s --toc --katex -c pandoc.css --metadata pagetitle="Getting Started with Splunk" ./memes.md > memes.html
+
+# add <article> tags
+
+# TODO
+# [ ] create a header / footer. try to implement floating footnotes.
+-->
+
 <!-- Get a better dataset. Use it in all examples (esp. spl commands) -->  
 
 What you'll learn from this article:
