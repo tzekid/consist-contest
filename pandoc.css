@@ -540,6 +540,7 @@ article h3 {
     margin-top: 42px;
 }
 article p {
+    font-family: 'Open Sans', sans-serif;
     font-size: 1em;
     text-align: justify;
 }
