@@ -26,7 +26,6 @@
     }
   </style>
   <link rel="stylesheet" href="pandoc.css" />
-  <script src="jquery-3.4.1.min.js"></script>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -42,33 +41,33 @@
             <li><a href="#how-to-install-splunk">How to install Splunk</a></li>
             <li><a href="#getting-data-into-splunk">Getting Data into Splunk</a></li>
             <li><a href="#the-splunkweb-interface">The SplunkWeb Interface</a></li>
+          </ul>
+        </li>
+        <li><a href="#protip-use-all-time">- [ ] PROTIP: USE ALL TIME</a>
+          <ul>
             <li><a href="#the-spl-language">The SPL language</a>
               <ul>
                 <li><a href="#search-filters">Search filters</a></li>
                 <li><a href="#search-commands">Search commands</a></li>
               </ul>
             </li>
-            <li><a href="#visualizing-searches">Visualizing Searches</a></li>
-            <li><a href="#creating-dashboards">Creating Dashboards</a></li>
+            <li><a href="#visualizing-searches">Visualizing Searches</a>
+              <ul>
+                <li><a href="#table">table</a></li>
+                <li><a href="#chart">chart</a></li>
+                <li><a href="#timechart">timechart</a></li>
+              </ul>
+            </li>
             <li><a href="#next-steps">Next steps</a></li>
           </ul>
         </li>
+        <li><a href="#big-data">Big Data</a></li>
+        <li><a href="#search">Search</a></li>
+        <li><a href="#dashboards">Dashboards</a></li>
       </ul>
     </nav>
     <h1 id="getting-started-with-splunk">Getting Started with Splunk</h1>
-    <!--
-# compile with:
-pandoc -t html5 -s --toc --katex -c pandoc.css --metadata pagetitle="Getting Started with Splunk" ./memes.md > memes.html
-
-# add <article> tags
-
-# TODO
-# [ ] create a header / footer
-# [ ] try to implement floating footnotes.
-# [ ] go back arrow
-# [ ] change pandoc.css to fit the style
--->
-    <!-- Get a better dataset. Use it in all examples (esp. spl commands) -->
+    <!-- pandoc -t html5 -s --toc --katex -c pandoc.css --metadata pagetitle="Getting Started with Splunk" ./memes.md > memes.html -->
     <p>What you’ll learn from this article:</p>
     <ul>
       <li>What is splunk</li>
@@ -79,7 +78,6 @@ pandoc -t html5 -s --toc --katex -c pandoc.css --metadata pagetitle="Getting Sta
       <li>How to create filters to reduce the amount of data returned from searches</li>
       <li>How to visualize searches and create dashboards (TBD)</li>
     </ul>
-    <!-- strechgoals for the future: visualisation and dashboards -->
     <h2 id="what-is-splunk">What is Splunk</h2>
     <p>To summarize what Splunk is without watering down all the awesome stuff it can do, you can think of it like this:
       “It’s like Google for all kinds of machine data!”</p>
@@ -127,6 +125,7 @@ pandoc -t html5 -s --toc --katex -c pandoc.css --metadata pagetitle="Getting Sta
       <li>finding and filtering the data to include only the events you’re looking for</li>
       <li>selecting the appropriate time range the events occured in.</li>
     </ul>
+    <h1 id="protip-use-all-time">- [ ] PROTIP: USE ALL TIME</h1>
     <p>On the left panel you can see fields that Splunk has recognise`d under <strong>IMPORTANT FIELDS</strong>.</p>
     <p>Clicking on the <strong>status</strong> field shows you exactly which status codes and how often they show up in
       the dataset, giving up very powerful information - how the server performs - at a glance. There you also find a
@@ -176,8 +175,8 @@ pandoc -t html5 -s --toc --katex -c pandoc.css --metadata pagetitle="Getting Sta
     <h3 id="search-commands">Search commands</h3>
     <p>There are two very important commands in SPL, <code>eval</code> and <code>stats</code>, but in this section we
       will only cover <code>stats</code>.</p>
-    <p>The <code>stats</code> command is used to perform statistical functions. Here are some examples with the
-      fictional value of “time_traveled”:</p>
+    <p>The <code>stats</code> command is used to perform statistical functions. Here are some examples with the fictive
+      value of “time_traveled”:</p>
     <table>
       <thead>
         <tr class="header">
@@ -207,13 +206,41 @@ pandoc -t html5 -s --toc --katex -c pandoc.css --metadata pagetitle="Getting Sta
     <p>The returned value of these functions has the name given after the <code>as</code> keyword, like
       <code>average_travel_time</code> above. If there’s no <code>as</code> present, then the function name will be
       shown instead, like the <code>count(time_traveled)</code> above.</p>
-    <!-- short sparkline example (and screenshot) -->
     <p>You can get more info on <a
         href="http://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Eval">Eval</a> and <a
         href="http://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Stats">Stats</a> in the official
       documentation.</p>
     <h2 id="visualizing-searches">Visualizing Searches</h2>
-    <h2 id="creating-dashboards">Creating Dashboards</h2>
+    <p>At this point you can build simple searches, now how about visualizing them?</p>
+    <h3 id="table">table</h3>
+    <p>You can pipe events into <code>table</code> and get the event fields arranged from left to right.</p>
+    <p>In the next example we take all events (<code>*</code>) and pipe them to table with: <code>* | table *</code></p>
+    <figure>
+      <img src="/home/kid/Pictures/Screenshot_20190709_141951.png" alt="" />
+      <figcaption>Screenshot_20190709_141951</figcaption>
+    </figure>
+    <h3 id="chart">chart</h3>
+    <p>You can prepare the results to be displayed in a chart (bar, column, line, area or pie chart) with the
+      <code>chart</code> command.</p>
+    <p>The syntax is as follows:</p>
+    <p><code>... | chart &lt;chart-options&gt; &lt;stats or aggregation function&gt; BY &lt;column-split&gt;</code></p>
+    <p><code>or</code></p>
+    <p><code>... | chart &lt;stats or agg function&gt; OVER &lt;row-split&gt; BY &lt;column-split&gt;</code></p>
+    <p>And here’s a simple example where we count the useragents (e.g. types of browsers) that visited our servers in
+      the sample data with: <code>* | chart limit=3 count by useragent</code></p>
+    <figure>
+      <img src="/home/kid/Pictures/Screenshot_20190709_145831.png" alt="" />
+      <figcaption>Screenshot_20190709_145831</figcaption>
+    </figure>
+    <h3 id="timechart">timechart</h3>
+    <p><code>timechart</code> looks at a field (it’s values shown on the Y-axis) and how it changes over time (shown
+      over the X-axis).</p>
+    <p>Here’s an example using timechart to show the average data transmitted by different useragents:</p>
+    <p><code>* | timechart avg(bytes) by useragent</code></p>
+    <figure>
+      <img src="/home/kid/Pictures/Screenshot_20190709_142450.png" alt="" />
+      <figcaption>Screenshot_20190709_142450</figcaption>
+    </figure>
     <h2 id="next-steps">Next steps</h2>
     <p>Things that we did not cover in this article that you should definetly look up are ways to visualize your data
       and creating dashboards. Splunk has a <a
@@ -227,13 +254,20 @@ pandoc -t html5 -s --toc --katex -c pandoc.css --metadata pagetitle="Getting Sta
         tutorial</a> for Splunk you can go through if you want to learn more and the book we highly recommend is <a
         href="https://www.packtpub.com/eu/big-data-and-business-intelligence/splunk-7x-quick-start-guide">Splunk 7.x
         Quick Start Guide</a>.</p>
-    <hr />
-    <!-- 
-# Big Data
-
-# Search
-
-# Dashboards -->
+    <h1 id="big-data">Big Data</h1>
+    <p>Every company has a gazillion applications and servers, databases and network devices like routers - and all of
+      them create log files that record their activities and statuses over time. Troubleshooting a single problem in
+      this sea of machine data, or monitoring their status would be a pain to do manually!</p>
+    <p>That’s where Splunk comes in and collects all this machine data in one place making it easy to search and
+      investigate data, just like Google does for the web!</p>
+    <h1 id="search">Search</h1>
+    <p>When dealing with big data you will use search commands to find and filter the results you’re looking for. The
+      search commands in Splunk are written in the <strong>Search Processing Language (SPL)</strong>.</p>
+    <p>The power and ease of use of SPL is one of the main reasons why Splunk is so wide spread. It allows everyone to
+      solve their Big Data problems in no time!</p>
+    <h1 id="dashboards">Dashboards</h1>
+    <p>Dashboards allow you to group together information in one coherent view, making it easier to get an overview and
+      understand what’s going on with your data.</p>
     <section class="footnotes" role="doc-endnotes">
       <hr />
       <ol>
@@ -244,155 +278,6 @@ pandoc -t html5 -s --toc --katex -c pandoc.css --metadata pagetitle="Getting Sta
       </ol>
     </section>
   </article>
-  <script>
-    /*	Popup/floating footnotes to avoid readers needing to scroll to the end of
-	the page to see any footnotes; see
-	http://ignorethecode.net/blog/2010/04/20/footnotes/ for details.
-	*/
-Footnotes = {
-	contentContainerSelector: "#markdownBody",
-	minFootnoteWidth: 520,
-	footnotefadetimeout: false,
-	footnotekilltimeout: false,
-	footnotepopuptimeout: false,
-	footnotePopup: null,
-	unbind: function() {
-		document.querySelectorAll(".footnote-ref").forEach(fnref => {
-			//	Unbind existing mouseover/mouseout events, if any.
-			fnref.removeEventListener("mouseover", Footnotes.footnoteover);
-			fnref.removeEventListener("mouseout", Footnotes.footnoteoout);
-		});
-	},
-	setup: function() {
-		Footnotes.unbind();
-		//	Get all footnote links.
-		document.querySelectorAll(".footnote-ref").forEach(fnref => {
-			//	Bind mousemover/mouseout events.
-			fnref.addEventListener("mouseover", Footnotes.footnoteover);
-			fnref.addEventListener("mouseout", Footnotes.footnoteoout);
-		});
-	},
-	//	The mouseover event.
-	footnoteover: (event) => {
-		//	Stop the countdown to un-pop the popup.
-		clearTimeout(Footnotes.footnotefadetimeout);
-		clearTimeout(Footnotes.footnotekilltimeout);
-		clearTimeout(Footnotes.footnotepopuptimeout);
-
-		Footnotes.footnotepopuptimeout = setTimeout(() => {
-			//	Get the citation and its target footnote ID.
-			var citationAbsoluteRect = event.target.getBoundingClientRect();
-			let bodyAbsoluteRect = document.body.getBoundingClientRect();
-			var citationPosition = {
-				left: (citationAbsoluteRect.left - bodyAbsoluteRect.left),
-				top: (citationAbsoluteRect.top - bodyAbsoluteRect.top)
-			};
-
-			if (!event.target.hash) return;
-			var targetFootnoteId = event.target.hash.substr(1);
-
-			//	Get, or create, the footnote popup.
-			Footnotes.footnotePopup = document.querySelector("#footnotediv");
-			if (Footnotes.footnotePopup) {
-				Footnotes.footnotePopup.classList.remove("fading");
-				Footnotes.footnotePopup.remove();
-			} else {
-				Footnotes.footnotePopup = document.createElement('div');
-				Footnotes.footnotePopup.id = "footnotediv";
-			}
-
-			//	Inject the contents of the footnote into the popup, if needed.
-			if (Footnotes.footnotePopup.dataset.footnoteReference != targetFootnoteId) {
-				var targetFootnote = document.querySelector("#" + targetFootnoteId);
-				Footnotes.footnotePopup.innerHTML = '<div>' + targetFootnote.innerHTML + '</div>';
-				Footnotes.footnotePopup.dataset.footnoteReference = targetFootnoteId;
-			}
-
-			//	Inject the popup into the page.
-			document.querySelector(Footnotes.contentContainerSelector).appendChild(Footnotes.footnotePopup);
-
-			//	Add event listeners.
-			Footnotes.footnotePopup.addEventListener("mouseover", Footnotes.divover);
-			Footnotes.footnotePopup.addEventListener("mouseout", Footnotes.footnoteoout);
-
-			/*	How much "breathing room" to give the footnote reference (i.e.,
-				offset of the footnote popup).
-				*/
-			var footnotePopupBreathingRoom = {
-				x:	(Math.round(citationAbsoluteRect.width) * 1.5),
-				y:	Math.round(citationAbsoluteRect.height) + (Math.round(citationAbsoluteRect.width) * 0.5)
-			};
-
-			/*	Set the horizontal position first; this causes the popup to be laid
-				out, and the layout engine calculates the height for us.
-				*/
-			var footnotePopupLeft = citationPosition.left + footnotePopupBreathingRoom.x;
-			if (footnotePopupLeft + Footnotes.minFootnoteWidth > window.innerWidth)
-				footnotePopupLeft = window.innerWidth - Footnotes.minFootnoteWidth;
-			Footnotes.footnotePopup.style.left = footnotePopupLeft + "px";
-			//	Correct for various positioning aberrations.
-			if (Footnotes.footnotePopup.getBoundingClientRect().right > window.innerWidth)
-				Footnotes.footnotePopup.style.maxWidth = (Footnotes.footnotePopup.clientWidth - (Footnotes.footnotePopup.getBoundingClientRect().right - window.innerWidth) - parseInt(getComputedStyle(Footnotes.footnotePopup.firstElementChild).paddingRight)) + "px";
-			else if (citationPosition.left + footnotePopupBreathingRoom.x + Footnotes.footnotePopup.clientWidth < window.innerWidth)
-				Footnotes.footnotePopup.style.left = (citationPosition.left + footnotePopupBreathingRoom.x) + "px";
-			else if (citationPosition.left - (footnotePopupBreathingRoom.x + Footnotes.footnotePopup.clientWidth) > Footnotes.footnotePopup.getBoundingClientRect().left)
-				Footnotes.footnotePopup.style.left = (citationPosition.left - footnotePopupBreathingRoom.x - Footnotes.footnotePopup.clientWidth) + "px";
-
-			//	Now we know how tall the popup is...
-			var provisionalFootnotePopupHeight = Footnotes.footnotePopup.clientHeight;
-
-			//	Determining vertical position is full of edge cases.
-			var footnotePopupTop = citationPosition.top + footnotePopupBreathingRoom.y;
-			if (footnotePopupTop + provisionalFootnotePopupHeight > window.innerHeight + window.scrollY) {
-				footnotePopupTop -= (provisionalFootnotePopupHeight + footnotePopupBreathingRoom.y);
-			}
-			if (top + provisionalFootnotePopupHeight > window.innerHeight + window.scrollY ||
-				provisionalFootnotePopupHeight == window.innerHeight ||
-				footnotePopupTop < window.scrollY) {
-				footnotePopupTop = window.scrollY;
-			}
-			if (footnotePopupTop + provisionalFootnotePopupHeight + 120 < citationPosition.top) {
-				footnotePopupTop = citationPosition.top - provisionalFootnotePopupHeight;
-			} else if (top > citationPosition.top) {
-				footnotePopupTop -= 90;
-			}
-			if (footnotePopupTop < 0) {
-				footnotePopupTop = 0;
-			}
-			Footnotes.footnotePopup.style.top = footnotePopupTop + "px";
-		}, 50);
-	},
-	//	The mouseout event.
-	footnoteoout: (event) => {
-		clearTimeout(Footnotes.footnotefadetimeout);
-		clearTimeout(Footnotes.footnotekilltimeout);
-		clearTimeout(Footnotes.footnotepopuptimeout);
-
-		if (!Footnotes.footnotePopup) return;
-
-		Footnotes.footnotefadetimeout = setTimeout(() => {
-			Footnotes.footnotePopup.classList.add("fading");
-			Footnotes.footnotekilltimeout = setTimeout(() => {
-				Footnotes.footnotePopup.classList.remove("fading");
-				Footnotes.footnotePopup.remove();
-			}, 750);
-		}, 100);
-	},
-	//	The "user moved mouse back into popup" mouseover event.
-	divover: (event) => {
-		clearTimeout(Footnotes.footnotefadetimeout);
-		clearTimeout(Footnotes.footnotekilltimeout);
-		clearTimeout(Footnotes.footnotepopuptimeout);
-		Footnotes.footnotePopup.classList.remove("fading");
-	}
-}
-
-if (document.readyState == "complete") {
-	Footnotes.setup();
-} else {
-	window.addEventListener("load", Footnotes.setup);
-}
-  </script>
 </body>
 
 </html>

@@ -1,19 +1,6 @@
 # Getting Started with Splunk
 
-<!--
-# compile with:
-pandoc -t html5 -s --toc --katex -c pandoc.css --metadata pagetitle="Getting Started with Splunk" ./memes.md > memes.html
-
-# add <article> tags
-
-# TODO
-# [ ] create a header / footer
-# [ ] try to implement floating footnotes.
-# [ ] go back arrow
-# [ ] change pandoc.css to fit the style
--->
-
-<!-- Get a better dataset. Use it in all examples (esp. spl commands) -->  
+<!-- pandoc -t html5 -s --toc --katex -c pandoc.css --metadata pagetitle="Getting Started with Splunk" ./memes.md > memes.html -->
 
 What you'll learn from this article:
 
@@ -24,8 +11,6 @@ What you'll learn from this article:
 - How to write basic Search Processing Language (SPL) search strings
 - How to create filters to reduce the amount of data returned from searches
 - How to visualize searches and create dashboards (TBD)
-
-<!-- strechgoals for the future: visualisation and dashboards -->
 
 ## What is Splunk
 
@@ -66,7 +51,9 @@ This is the place you'll be spending most of your time. You already have an init
 The search command is written in the **Search Processing Language (SPL)**. All your searches are based around two factors:
 
 - finding and filtering the data to include only the events you're looking for
-- selecting the appropriate time range the events occured in.
+- selecting the appropriate time range the events occured in.[^1]
+
+[^1]: We recommend to have "All time" checked (in the "others" section of time) when following this getting started article.
 
 On the left panel you can see fields that Splunk has recognise`d under **IMPORTANT FIELDS**.
 
@@ -117,7 +104,7 @@ Here's another example that uses all of these search tools: `sourcetype=*access*
 
 There are two very important commands in SPL, `eval` and `stats`, but in this section we will only cover `stats`.
 
-The `stats` command is used to perform statistical functions. Here are some examples with the fictional value of "time_traveled":
+The `stats` command is used to perform statistical functions. Here are some examples with the fictive value of "time_traveled":
 
 | Function          | Example                                           |
 | ----------------- | ------------------------------------------------- |
@@ -128,13 +115,47 @@ The `stats` command is used to perform statistical functions. Here are some exam
 
 The returned value of these functions has the name given after the `as` keyword, like `average_travel_time` above. If there's no `as` present, then the function name will be shown instead, like the `count(time_traveled)` above.
 
-<!-- short sparkline example (and screenshot) -->
-
 You can get more info on [Eval](http://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Eval) and [Stats](http://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Stats) in the official documentation.
 
 ## Visualizing Searches
 
-## Creating Dashboards
+At this point you can build simple searches, now how about visualizing them? 
+
+### table
+
+You can pipe events into `table` and get the event fields arranged from left to right.
+
+In the next example we take all events (`*`) and pipe them to table with: ```* | table *```
+
+![Screenshot_20190709_141951](/home/kid/Pictures/Screenshot_20190709_141951.png)
+
+### chart
+
+You can prepare the results to be displayed in a chart (bar, column, line, area or pie chart) with the `chart` command. 
+
+The syntax is as follows:
+
+```... | chart <chart-options> <stats or aggregation function> BY <column-split>```
+
+```or```
+
+```... | chart <stats or agg function> OVER <row-split> BY <column-split>```
+
+
+
+And here's a simple example where we count the useragents (e.g. types of browsers) that visited our servers in the sample data with:  `* | chart limit=3 count by useragent`
+
+![Screenshot_20190709_145831](/home/kid/Pictures/Screenshot_20190709_145831.png)
+
+### timechart
+
+`timechart` looks at a field (it's values shown on the Y-axis) and how it changes over time (shown over the X-axis).  
+
+Here's an example using timechart to show the average data transmitted by different useragents:
+
+```* | timechart avg(bytes) by useragent```
+
+![Screenshot_20190709_142450](/home/kid/Pictures/Screenshot_20190709_142450.png)
 
 ## Next steps
 
@@ -144,10 +165,18 @@ The next best thing you can do is play around with the dataset you have previous
 
 There is the [official tutorial](https://docs.splunk.com/Documentation/Splunk/latest/SearchTutorial/WelcometotheSearchTutorial) for Splunk you can go through if you want to learn more and the book we highly recommend is [Splunk 7.x Quick Start Guide](https://www.packtpub.com/eu/big-data-and-business-intelligence/splunk-7x-quick-start-guide).
 
----
-<!-- 
 # Big Data
+
+Every company has a gazillion applications and servers, databases and network devices like routers - and all of them create log files that record their activities and statuses over time. Troubleshooting a single problem in this sea of machine data, or monitoring their status would be a pain to do manually!
+
+That's where Splunk comes in and collects all this machine data in one place making it easy to search and investigate data, just like Google does for the web!
 
 # Search
 
-# Dashboards -->
+When dealing with big data you will use search commands to find and filter the results you're looking for. The search commands in Splunk are written in the **Search Processing Language (SPL)**.
+
+The power and ease of use of SPL is one of the main reasons why Splunk is so wide spread. It allows everyone to solve their Big Data problems in no time!
+
+# Dashboards
+
+Dashboards allow you to group together information in one coherent view, making it easier to get an overview and understand what's going on with your data.
