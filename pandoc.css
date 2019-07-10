@@ -956,6 +956,10 @@ code {
     }
 }
 
+p {
+    font-family: 'Open Sans', sans-serif;
+}
+
 #dickbutt {
     display: block;
     padding: 21.5px 21.5px;
@@ -967,9 +971,4 @@ code {
 
 #dickbutt span {
     font-size: 1.3em;
-}
-
-#navMenu > div > a:hover,
-#navMenu > div > a:active {
-    color: red;
 }
