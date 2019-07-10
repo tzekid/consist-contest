@@ -10,7 +10,7 @@ What you'll learn from this article:
 - Essential splunkweb interface features and controls
 - How to write basic Search Processing Language (SPL) search strings
 - How to create filters to reduce the amount of data returned from searches
-- How to visualize searches and create dashboards (TBD)
+- How to visualize searches and create dashboards
 
 ## What is Splunk
 

@@ -10,7 +10,7 @@ Was du aus diesem Artikel lernen wirst:
 - Wesentliche Funktionen und Steuerelemente für die Benutzeroberfläche von Splunkweb
 - So schreibst du SPL-befehle (Basic Search Processing Language)
 - So erstellst du Filter, um die von Suchvorgängen zurückgegebene Datenmenge zu reduzieren
-- Visualisieren von Suchen und Erstellen von Dashboards (TBD)
+- Visualisieren von Suchen und Erstellen von Dashboards 
 
 ## Was ist Splunk?
 
