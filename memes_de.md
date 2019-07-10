@@ -28,7 +28,7 @@ Nachdem du es erfolgreich installiert hast, öffne dein Browser und gib `http://
 
 Dort kannst du dein Splunk-Zugangsdaten eingeben [^ 0]. Sobald du eingeloggt bist, klick auf die "Search & Reporting" App in der linke Leiste.
 
-![aa182b9f-a631-4457-91ee-471f953cc815](/home/kid/Projects/consist-contest/aa182b9f-a631-4457-91ee-471f953cc815.png)
+![aa182b9f-a631-4457-91ee-471f953cc815](./aa182b9f-a631-4457-91ee-471f953cc815.png)
 
 [^ 0]: Wenn du keinen User festgelegt hast, lautet der Benutzername "admin" und das Kennwort "changeme"
 
@@ -44,7 +44,7 @@ So kannst du [diesen Datensatz herunterladen](#) und auf Splunk hochladen, indem
 
 ## Das SplunkWeb Interface
 
-![dindindin](/home/kid/Projects/consist-contest/dindindin.png)
+![dindindin](./dindindin.png)
 
 Dies ist der Ort, an dem du die meiste Zeit verbringen wirst. Du hast bereits einen ersten Suchbefehl, der nur die Daten anzeigt, die du importiert hast.
 
@@ -127,7 +127,7 @@ Du kannst Ereignisse in eine "Tabelle" umleiten und die Ereignisfelder von links
 
 Im nächsten Beispiel nehmen wir alle Ereignisse (`*`) und leiten sie zur Tabelle mit: ```* | Tabelle *
 
-![visualizing_searches](/home/kid/Projects/consist-contest/visualizing_searches.png)
+![visualizing_searches](./visualizing_searches.png)
 
 ### chart
 
@@ -141,7 +141,7 @@ Die Syntax lautet wie folgt:
 
 ```... | Diagramm <Statistik oder Agg-Funktion> OVER <Zeilensplit> BY <Spaltensplit> ```
 
-![chart](/home/kid/Projects/consist-contest/chart.png)
+![chart](./chart.png)
 
 Und hier ist ein einfaches Beispiel, in dem wir die Benutzeragenten (z. B. Browsertypen), die unsere Server besucht haben in den Beispieldaten mit `* | zählen Diagrammlimit = 3 count by useragent` zeigt.
 
@@ -153,7 +153,7 @@ Hier ist ein Beispiel in dem mithilfe eines Zeitdiagramms die durchschnittlichen
 
 ```* | timechart avg (bytes) von useragent```
 
-![timechart](/home/kid/Projects/consist-contest/timechart.png)
+![timechart](./timechart.png)
 
 ## Nächste Schritte
 
