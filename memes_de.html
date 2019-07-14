@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Getting Started with Splunk</title>
+
+  <style>
+    code {
+      white-space: pre-wrap;
+    }
+
+    span.smallcaps {
+      font-variant: small-caps;
+    }
+
+    span.underline {
+      text-decoration: underline;
+    }
+
+    div.column {
+      display: inline-block;
+      vertical-align: top;
+      width: 50%;
+    }
+
+    .dickibutt-right {
+      transform: translateY(-3.4em);
+      display: block;
+      float: right;
+      padding: 21.5px 21.5px;
+      color: #3273dc;
+      font-size: 1.25em;
+      margin-right: 12vw;
+      text-decoration: none;
+    }
+  </style>
+  <link rel="stylesheet" href="pandoc.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <a href="/" class="dickbutt" id="dickbutt"><span><</span> BACK</a>
+  <a href="/memes.html" class="dickibutt-right" id="dickibutt-right">English 🇬🇧</a>
+  <article>
+  <nav id="TOC" role="doc-toc">
+    <ul>
+      <li><a href="#erste-schritte-mit-splunk">Erste Schritte mit Splunk</a>
+        <ul>
+          <li><a href="#was-ist-splunk">Was ist Splunk?</a></li>
+          <li><a href="#splunk-installieren">Splunk installieren</a></li>
+          <li><a href="#daten-in-splunk-importieren">Daten in Splunk importieren</a></li>
+          <li><a href="#das-splunkweb-interface">Das SplunkWeb Interface</a></li>
+          <li><a href="#die-spl-sprache">Die SPL-Sprache</a>
+            <ul>
+              <li><a href="#suchfilter">Suchfilter</a></li>
+              <li><a href="#suchbefehle">Suchbefehle</a></li>
+            </ul>
+          </li>
+          <li><a href="#visualisierung-von-suchen">Visualisierung von Suchen</a>
+            <ul>
+              <li><a href="#table">table</a></li>
+              <li><a href="#chart">chart</a></li>
+              <li><a href="#timechart">timechart</a></li>
+            </ul>
+          </li>
+          <li><a href="#nächste-schritte">Nächste Schritte</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <h1 id="erste-schritte-mit-splunk">Erste Schritte mit Splunk</h1>
+  <!-- pandoc -t html5 -s --toc --katex -c pandoc.css --metadata pagetitle = "Erste Schritte mit Splunk" ./memes.md> memes.html -->
+  <p>Was du aus diesem Artikel lernen wirst:</p>
+  <ul>
+    <li>Was ist Splunk?</li>
+    <li>Splunk installieren</li>
+    <li>Wie bekomme ich Daten in Splunk (Grundkenntnisse)</li>
+    <li>Wesentliche Funktionen und Steuerelemente für die Benutzeroberfläche von Splunkweb</li>
+    <li>So schreibst du SPL-Befehle (Basic Search Processing Language)</li>
+    <li>So erstellst du Filter, um die von Suchvorgängen zurückgegebene Datenmenge zu reduzieren</li>
+    <li>Visualisieren von Suchen und Erstellen von Dashboards</li>
+  </ul>
+  <h2 id="was-ist-splunk">Was ist Splunk?</h2>
+  <p>Um zusammenzufassen, was Splunk ist, ohne all die fantastischen Dinge zu verwässern, die es kann, kannst du dir das
+    so vorstellen: “Es ist wie Google für alle Arten von Maschinendaten!”</p>
+  <p>Jedes Unternehmen verfügt über eine Unmenge von Anwendungen und Servern, Datenbanken und Netzwerkgeräten wie
+    Routern - und alle erstellen Protokolldateien, in denen ihre Aktivitäten und ihr Status im Laufe der Zeit
+    aufgezeichnet werden. Die Behebung eines einzelnen Problems in diesem Meer von Maschinendaten oder die Überwachung
+    ihres Status wäre mühsam von Hand!</p>
+  <p>Hier kommt Splunk ins Spiel und sammelt all diese Maschinendaten an einem Ort. So kannst du ganz einfach nach Daten
+    suchen und suchen, genau wie bei Google für das Web!</p>
+  <h2 id="splunk-installieren">Splunk installieren</h2>
+  <p>Zunächst solltest du Splunk installieren. Dazu gehst du auf deren Seite und erstellt <a
+      href="https://www.splunk.com/page/sign_up?redirecturl=https://hackathon.consist.de">ein neues Konto</a>. Danach
+    lädst du <a href="https://www.splunk.com/en_us/download/splunk-enterprise.html">Splunk Enterprise</a> herunter.
+    Weitere Anweisungen hierzu findest du in <a
+      href="https://docs.splunk.com/Documentation/Splunk/latest/Installation/Chooseyourplatform">den offiziellen
+      Dokumenten</a>.</p>
+  <p>Nachdem du es erfolgreich installiert hast, öffne dein Browser und gib <code>http://localhost:8000/</code> in die
+    URL-Leiste ein.</p>
+  <p>Dort kannst du dein Splunk-Zugangsdaten eingeben <a href="#fn1" class="footnote-ref" id="fnref1"
+      role="doc-noteref"><sup>1</sup></a>. Sobald du eingeloggt bist, klick auf die “Search &amp; Reporting” App in der
+    linke Leiste.</p>
+  <figure>
+    <img src="./aa182b9f-a631-4457-91ee-471f953cc815.png" alt="" />
+    <figcaption>aa182b9f-a631-4457-91ee-471f953cc815</figcaption>
+  </figure>
+  <h2 id="daten-in-splunk-importieren">Daten in Splunk importieren</h2>
+  <p>Die Suchansicht ist jetzt leer, da keine Daten vorhanden sind. Also lass uns welche importieren.</p>
+  <p>Klick oben links auf das Splunk-Logo. Damit gelangst du zum Startbildschirm. Klick dann auf “Daten hinzufügen”.</p>
+  <p>In diesem Bildschirm hast du mehrere Möglichkeiten, wie du Daten in Splunk übertragen kannst. Im Moment wollen wir
+    nur einen Datensatz hochladen. Klicke auf die Schaltfläche “Hochladen”.</p>
+  <p>So kannst du <a href="#">diesen Datensatz herunterladen</a> und auf Splunk hochladen, indem du ihn entweder dort
+    ziehst und ablegst oder mit “Datei auswählen” einfügst. Splunk kann mit vielen verschiedenen Datentypen umgehen,
+    aber in unserem Fall hat es bereits das gewünschte Format, sodaß du in jedem Setup-Bildschirm einfach auf “Weiter”
+    klicken musst. Klicke anschließend auf “Suche starten”, um zur Such-App zurückzukehren.</p>
+  <h2 id="das-splunkweb-interface">Das SplunkWeb Interface</h2>
+  <figure>
+    <img src="./dindindin.png" alt="" />
+    <figcaption>dindindin</figcaption>
+  </figure>
+  <p>Dies ist der Ort, an dem du die meiste Zeit verbringen wirst. Du hast bereits einen ersten Suchbefehl, der nur die
+    Daten anzeigt, die du importiert hast.</p>
+  <p>Der Suchbefehl ist in der <strong>Search Processing Language (SPL)</strong> geschrieben. All deine Suchanfragen
+    basieren auf zwei Faktoren:</p>
+  <ul>
+    <li>Suchen und Filtern der Daten, um nur die von dir gesuchten Ereignisse einzuschließen</li>
+    <li>Auswahl des geeigneten Zeitraums, in dem die Ereignisse aufgetreten sind. <a href="#fn2" class="footnote-ref"
+        id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
+  </ul>
+  <p>Auf der linken Seite siehst du Felder, die Splunk unter <strong>WICHTIGE FELDER</strong> erkannt hat.</p>
+  <p>Wenn du auf das Feld <strong>Status</strong> kickst, siehst du genau welche Statuscodes und wie oft sie im
+    Datensatz angezeigt werden. Auf einen Blick erhältst du sehr aussagekräftige Informationen - wie der Server
+    funktioniert. Dort findest du auch einige nützliche Schnellsuchen unter <strong>Berichte</strong>.</p>
+  <h2 id="die-spl-sprache">Die SPL-Sprache</h2>
+  <p>Eine Splunk-Suche besteht aus einer Reihe von Befehlen und Argumenten, die mit dem Pipe-Zeichen (<code>|</code>) so
+    verkettet sind, daß die Ausgabe der vorigen Befehls in den nächsten Befehl rechts einfließt.</p>
+  <p>Ein Zusammenfassung sieht ungefähr so aus:</p>
+  <pre class="spl"><code>index = &lt;index&gt; &lt;filter&gt; &lt;&quot;Zu vergleichende Textzeichenfolge&quot;&gt;
+| Befehl1 &lt;Argumente&gt;
+| Befehl2 &lt;Argumente&gt;
+| Visualisierungsbefehle &amp; Argumente</code></pre>
+  <p>Zeilenumbrüche werden durch gleichzeitiges Drücken von <kbd>Strg</kbd> + <kbd>Eingabetaste</kbd> eingefügt.</p>
+  <p>Effektive Suchvorgänge können mithilfe einiger grundlegender Schritte erstellt werden, indem Suchbefehle
+    schrittweise und iterativ erstellt werden. Dabei muss stets sichergestellt werden, dass du die erwarteten Ergebnisse
+    erzielst und verstehst was die einzelnen Befehle bewirken.</p>
+  <p>Hier sind die grundlegenden Schritte zum Erstellen einer SPL-Suchzeichenfolge:</p>
+  <ol type="1">
+    <li>Gib einen Index und einen Zeitraum an, in dem alle Ereignisse abgerufen werden, an denen du interessiert bist.
+    </li>
+    <li>Füge ein Filter hinzu, um die Anzahl der Ereignisse besser zu spezifizieren und auf den Anteil zu reduzieren
+      womit du auch arbeiten willst.</li>
+    <li>Entwickle eine Kette von Befehlen und Filter schrittweise und prüfe, ob du auch das bekommst, was du von jedem
+      Schritt erwartest.</li>
+    <li>Visualisiere den endgültigen Datensatz mit einer Tabelle, einem Diagramm oder einem Zeitdiagramm und pass die
+      Visualisierungseinstellungen an.</li>
+    <li>Wenn die Suche wie gewünscht funktioniert, speichere es in einem Bericht, einem Dashboard oder einer
+      Warnmeldung.</li>
+  </ol>
+  <h3 id="suchfilter">Suchfilter</h3>
+  <p>Das Anwenden von Filtern ist wichtig, um die Suchergebnisse auf die Ereignisse zu beschränken, die dich
+    interessieren.</p>
+  <p>Du kannst nach Schlüsselwörtern, Textzeichenfolgen oder einfachen logischen Anweisungen suchen. Eine Anweisung mit
+    all diesen Eigenschaften lautet: “addtocart” AND status&gt; = 400 "</p>
+  <p>Zwischen allen Filterteilen in einem Suchbefehl gibt es ein implizites <code>AND</code>, sodass wir das vorherige
+    Statement auch als <code>"addtocart" AND Status &gt;= 400</code> schreiben können.</p>
+  <p>Dieser Befehl zeigt alle Ereignisse an, die die Textzeichenfolge “addtocart” enthalten und ein Schlüsselwort
+    “status” mit einem Wert größer oder gleich 400 haben.</p>
+  <p>Du kannst in deinen Suchfiltern auch andere logische Werkzeuge wie <code>OR</code> oder <code>NOT</code> angeben,
+    Klammern zum Gruppieren oder Platzhalter / <a
+      href="https://docs.splunk.com/Documentation/Splunk/latest/Search/Wildcards">wildcards</a> (Sternchen) verwenden.
+    Das Verwenden von <code>NOT</code> und Wildcards kann viel Zeit in Anspruch nehmen und Ihre Suche verlangsamen.
+    Verwende sie daher mit Bedacht.</p>
+  <p>Hier ist ein weiteres Beispiel, das alle diese Suchwerkzeuge verwendet:</p>
+  <p><code>sourcetype = * access * (status = 400 OR status = 404) NOT" addtocart "</code>.</p>
+  <h3 id="suchbefehle">Suchbefehle</h3>
+  <p>Es gibt zwei sehr wichtige Befehle in SPL, <code>eval</code> und<code>stats</code>, aber in diesem Abschnitt werden
+    wir nur <code>stats</code> behandeln.</p>
+  <p>Mit dem Befehl “stats” werden statistische Funktionen ausgeführt. Hier sind einige Beispiele mit dem fiktiven Wert
+    “time_traveled”:</p>
+  <table>
+    <thead>
+      <tr class="header">
+        <th>Funktion</th>
+        <th>Beispiel</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="odd">
+        <td><code>avg (x)</code></td>
+        <td><code>stats avg (time_traveled) as average_travel_time</code></td>
+      </tr>
+      <tr class="even">
+        <td><code>count (x)</code></td>
+        <td><code>stats count (time_traveled) by time_traveled</code></td>
+      </tr>
+      <tr class="odd">
+        <td><code>max (x) / min (x)</code></td>
+        <td><code>stats max (time_traveled) as longest_travel_time</code></td>
+      </tr>
+      <tr class="even">
+        <td><code>sum (x)</code></td>
+        <td><code>stats sum (time_traveled) as total_travel_time</code></td>
+      </tr>
+    </tbody>
+  </table>
+  <p>Der zurückgegebene Wert dieser Funktionen hat den Namen der nach dem Schlüsselwort “as” angegeben ist, wie oben
+    “average_travel_time”. Wenn kein “as” vorhanden ist wird stattdessen der Funktionsname angezeigt, wie oben “count
+    (time_traveled)”.</p>
+  <p>Weitere Informationen erhälst du unter <a
+      href="http://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Eval">Eval</a> und <a
+      href="http://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Stats">Stats</a> in der offiziellen
+    Dokumentation.</p>
+  <h2 id="visualisierung-von-suchen">Visualisierung von Suchen</h2>
+  <p>An dieser Stelle kannst du einfache Suchanfragen erstellen. Wie wäre es nun mit deren Visualisierung?</p>
+  <h3 id="table">table</h3>
+  <p>Du kannst Ereignisse in eine “Tabelle” umleiten und die Ereignisfelder von links nach rechts anordnen.</p>
+  <p>Im nächsten Beispiel nehmen wir alle Ereignisse (<code>*</code>) und leiten sie zur Tabelle mit: ```* | table *</p>
+  <figure>
+    <img src="./visualizing_searches.png" alt="" />
+    <figcaption>visualizing_searches</figcaption>
+  </figure>
+  <h3 id="chart">chart</h3>
+  <p>Mit dem Befehl “chart” kannst du die Ergebnisse für die Anzeige in einem Diagramm (Balken-, Spalten-, Linien-,
+    Flächen- oder Tortendiagramm) vorbereiten.</p>
+  <p>Die Syntax lautet wie folgt:</p>
+  <p>
+    <code>... | chart &lt;Diagrammoptionen&gt; &lt;Statistik oder Aggregationsfunktion&gt; BY &lt;Spaltenaufteilung&gt;</code>
+  </p>
+  <p><code>oder</code></p>
+  <p><code>... | chart &lt;Statistik oder Agg-Funktion&gt; OVER &lt;Zeilensplit&gt; BY &lt;Spaltensplit&gt;</code></p>
+  <figure>
+    <img src="./chart.png" alt="" />
+    <figcaption>chart</figcaption>
+  </figure>
+  <p>Und hier ist ein einfaches Beispiel, in dem wir die Benutzeragenten (z. B. Browsertypen), die unsere Server besucht
+    haben in den Beispieldaten mit <code>* | count Diagrammlimit = 3 count by useragent</code> zeigt.</p>
+  <h3 id="timechart">timechart</h3>
+  <p><code>timechart</code> betrachtet ein Feld (seine Werte werden auf der Y-Achse angezeigt) und wie es sich mit der
+    Zeit ändert (über der X-Achse angezeigt).</p>
+  <p>Hier ist ein Beispiel in dem mithilfe eines Zeitdiagramms die durchschnittlichen Daten angezeigt werden, die von
+    verschiedenen Benutzeragenten übertragen wurden:</p>
+  <p><code>* | timechart avg (bytes) von useragent</code></p>
+  <figure>
+    <img src="./timechart.png" alt="" />
+    <figcaption>timechart</figcaption>
+  </figure>
+  <h2 id="nächste-schritte">Nächste Schritte</h2>
+  <p>Dinge, die wir in diesem Artikel nicht behandelt haben und die du unbedingt nachschlagen solltest sind
+    Möglichkeiten deine Daten zu visualisieren und Dashboards zu erstellen. Splunk bietet für beide Themen einen <a
+      href="https://docs.splunk.com/Documentation/Splunk/latest/Viz/Aboutthismanual">Artikel zum Einstieg</a> an.</p>
+  <p>Das nächstbeste was du tun könntest, ist mit dem zuvor heruntergeladenen Datensatz herumzuspielen. Oder noch
+    besser, du kannst zu einer Seite wie <a href="https://www.kaggle.com/datasets">kaggle</a> gehen, um einen Datensatz
+    zu finden, den du gerne splunken würdest.</p>
+  <p>Es gibt das <a
+      href="https://docs.splunk.com/Documentation/Splunk/latest/SearchTutorial/WelcometotheSearchTutorial">offizielle
+      Tutorial</a> für Splunk, das du durchgehen kannst, wenn du mehr erfahren möchtest und wir empfehlen das Buch <a
+      href="https://www.packtpub.com/eu/big-data-and-business-intelligence/splunk-7x-quick-start-guide">Splunk 7.x Quick
+      Start Guide</a>.</p>
+  <!-- <h1 id="big-data">Big Data</h1>
+  <p>Jedes Unternehmen verfügt über eine Unmenge von Anwendungen und Servern, Datenbanken und Netzwerkgeräten wie
+    Routern - und alle erstellen Protokolldateien, in denen ihre Aktivitäten und ihr Status im Laufe der Zeit
+    aufgezeichnet werden. Die Behebung eines einzelnen Problems in diesem Meer von Maschinendaten oder die Überwachung
+    ihres Status wäre mühsam von Hand!</p>
+  <p>Hier kommt Splunk ins Spiel und sammelt all diese Maschinendaten an einem Ort. So kannst du ganz einfach nach Daten
+    suchen und suchen, genau wie bei Google für das Web!</p>
+  <h1 id="suche">Suche</h1>
+  <p>Beim Umgang mit Big Data verwendest du Suchbefehle um die gesuchten Ergebnisse zu finden und zu filtern. Die
+    Suchbefehle in Splunk sind in der <strong>Search Processing Language (SPL)</strong> geschrieben.</p>
+  <p>Die Leistungsfähigkeit und Benutzerfreundlichkeit von SPL ist einer der Hauptgründe, warum Splunk so weit
+    verbreitet ist. Es ermöglicht jedem, seine Big-Data-Probleme in kürzester Zeit zu lösen!</p>
+  <h1 id="dashboards">Dashboards</h1>
+  <p>Mithilfe von Dashboards kannst du Informationen in einer zusammenhängenden Ansicht zusammenfassen, um einen
+    Überblick zu verschaffen und zu verstehen was mit Ihren Daten geschieht.</p> -->
+  <section class="footnotes" role="doc-endnotes">
+    <hr />
+    <ol>
+      <li id="fn1" role="doc-endnote">
+        <p>Wenn du keinen User festgelegt hast, lautet der Benutzername “admin” und das Kennwort “changeme”<a
+            href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p>
+      </li>
+      <li id="fn2" role="doc-endnote">
+        <p>Wir empfehlen, “All time” (im Abschnitt “others”) zu aktivieren, wenn du diesem “Getting Started”-Artikel
+          folgst.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p>
+      </li>
+    </ol>
+  </section>
+</article>
+</body>
+
+</html>

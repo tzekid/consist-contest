@@ -26,11 +26,11 @@ Zunächst solltest du Splunk installieren. Dazu gehst du auf deren Seite und ers
 
 Nachdem du es erfolgreich installiert hast, öffne dein Browser und gib `http://localhost:8000/` in die URL-Leiste ein.
 
-Dort kannst du dein Splunk-Zugangsdaten eingeben [^ 0]. Sobald du eingeloggt bist, klick auf die "Search & Reporting" App in der linke Leiste.
+Dort kannst du dein Splunk-Zugangsdaten eingeben [^0]. Sobald du eingeloggt bist, klick auf die "Search & Reporting" App in der linke Leiste.
 
 ![aa182b9f-a631-4457-91ee-471f953cc815](./aa182b9f-a631-4457-91ee-471f953cc815.png)
 
-[^ 0]: Wenn du keinen User festgelegt hast, lautet der Benutzername "admin" und das Kennwort "changeme"
+[^0]: Wenn du keinen User festgelegt hast, lautet der Benutzername "admin" und das Kennwort "changeme"
 
 ## Daten in Splunk importieren
 
@@ -51,9 +51,9 @@ Dies ist der Ort, an dem du die meiste Zeit verbringen wirst. Du hast bereits ei
 Der Suchbefehl ist in der **Search Processing Language (SPL)** geschrieben. All deine Suchanfragen basieren auf zwei Faktoren:
 
 - Suchen und Filtern der Daten, um nur die von dir gesuchten Ereignisse einzuschließen
-- Auswahl des geeigneten Zeitraums, in dem die Ereignisse aufgetreten sind. [^ 1]
+- Auswahl des geeigneten Zeitraums, in dem die Ereignisse aufgetreten sind. [^1]
 
-[^ 1]: Wir empfehlen, "All time" (im Abschnitt "others") zu aktivieren, wenn du diesem "Getting Started"-Artikel folgst.
+[^1]: Wir empfehlen, "All time" (im Abschnitt "others") zu aktivieren, wenn du diesem "Getting Started"-Artikel folgst.
 
 Auf der linken Seite siehst du Felder, die Splunk unter **WICHTIGE FELDER** erkannt hat.
 
@@ -141,9 +141,9 @@ Die Syntax lautet wie folgt:
 
 ```... | chart <Statistik oder Agg-Funktion> OVER <Zeilensplit> BY <Spaltensplit> ```
 
-![chart](./chart.png)
-
 Und hier ist ein einfaches Beispiel, in dem wir die Benutzeragenten (z. B. Browsertypen), die unsere Server besucht haben in den Beispieldaten mit `* | count Diagrammlimit = 3 count by useragent` zeigt.
+
+![chart](./chart.png)
 
 ### timechart
 
